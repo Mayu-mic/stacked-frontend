@@ -11,12 +11,11 @@ import { Item } from '../models/Item';
 @Injectable()
 export abstract class StackedService {
 
-    constructor(private tokenService: Angular2TokenService) {
+    constructor(protected tokenService: Angular2TokenService) {
         this.tokenService.init({
             apiBase: 'http://localhost:4000',
-            oAuthPaths: {
-                slack: 'auth/slack'
-            },
+            oAuthBase: 'http://localhost:4000',
+            oAuthCallbackPath: '/'
         });
     }
 
