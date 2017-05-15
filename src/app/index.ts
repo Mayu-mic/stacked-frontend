@@ -17,6 +17,8 @@ import { MainSectionComponent } from './components/MainSection';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EffectsModule } from '@ngrx/effects';
 
+import { Angular2TokenService } from 'angular2-token';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { EffectsModule } from '@ngrx/effects';
     TsuramiContainerHeader
   ],
   providers: [
-    TsuramisService
+    Angular2TokenService,
+    TsuramisService,
   ],
   bootstrap: [RootComponent]
 })
