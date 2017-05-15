@@ -1,5 +1,6 @@
+import { User } from '../models/User';
 import { Injectable } from '@angular/core';
-import { RequestCheckLoginAction, RequestLoginAction } from '../actions/user';
+import { RequestLoginAction, RequestLogoutAction, RequestUserInfoAction } from '../actions/user';
 import { StackedUserService } from '../services/StackedUserService';
 import { Angular2TokenService } from 'angular2-token';
 import { Actions, Effect } from '@ngrx/effects';
@@ -14,15 +15,24 @@ export class UserEffects {
         .ofType(user.REQUEST_LOGIN)
         .switchMap((action: RequestLoginAction) =>
             this.userService.login()
-                .map(res => new user.RequestLoginSuccessAction(res))
+                .map(_ => new user.RequestLoginSuccessAction())
         );
 
     @Effect()
-    loginCheck$: Observable<any> = this.action$
-        .ofType(user.CHECK_LOGIN)
-        .switchMap((action: RequestCheckLoginAction) =>
-            this.userService.check()
-                .map(res => new user.RequestCheckLoginAction())
+    logout$: Observable<any> = this.action$
+        .ofType(user.REQUEST_LOGOUT)
+        .switchMap((action: RequestLogoutAction) =>
+            this.userService.logout()
+                .map(_ => new user.RequestLogoutSuccessAction())
+        );
+
+    @Effect()
+    setUserInfo$: Observable<any> = this.action$
+        .ofType(user.REQUEST_USER_INFO)
+        .do(_ => this.tokenService.processOAuthCallback())
+        .filter(_ => !!this.tokenService.currentAuthData)
+        .switchMap((action: RequestUserInfoAction) =>
+            this.tokenService.validateToken().map(_ => new user.RequestUserInfoSuccessAction(this.tokenService.currentUserData))
         );
 
     private userService: StackedUserService;

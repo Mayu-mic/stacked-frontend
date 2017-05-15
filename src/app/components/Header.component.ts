@@ -1,3 +1,4 @@
+import { Angular2TokenService } from 'angular2-token';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { User } from '../models/User';
@@ -9,23 +10,23 @@ import * as fromUser from '../actions/user';
     template: require('./Header.component.html')
 })
 export class HeaderComponent implements OnInit {
-    currentUser: User;
     user$: Observable<User>;
+    currentUser: User = null;
 
     constructor(private store: Store<any>) {
       this.user$ = store.select('user');
+      this.user$.subscribe(user => this.currentUser = user);
     }
 
     loginClick() {
         this.store.dispatch(new fromUser.RequestLoginAction());
     }
 
+    logoutClick() {
+        this.store.dispatch(new fromUser.RequestLogoutAction());
+    }
+
     ngOnInit(): void {
-        // this.store.dispatch(new fromUser.RequestCheckLoginAction());
-      this.user$
-        .do(console.log)
-        .subscribe(
-          res => this.currentUser = res
-        );
+        this.store.dispatch(new fromUser.RequestUserInfoAction());
     }
 }

@@ -1,3 +1,5 @@
+import { Response } from '@angular/http';
+import { User } from '../models/User';
 import { Observable } from 'rxjs/Rx';
 import { StackedService } from './StackedService';
 
@@ -6,7 +8,7 @@ export class StackedUserService extends StackedService {
         return this.tokenService.signInOAuth('slack');
     }
 
-    check(): Observable<any> {
-        return Observable.of(this.tokenService.currentUserData);
+    logout(): Observable<Response> {
+        return this.tokenService.signOut();
     }
 };

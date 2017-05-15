@@ -15,7 +15,8 @@ export abstract class StackedService {
         this.tokenService.init({
             apiBase: 'http://localhost:4000',
             oAuthBase: 'http://localhost:4000',
-            oAuthCallbackPath: '/'
+            oAuthWindowType: 'sameWindow',
+            oAuthCallbackPath: ''
         });
     }
 

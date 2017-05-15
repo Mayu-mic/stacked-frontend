@@ -16,7 +16,7 @@ export const routes: Routes = [
   {
     path: ':page',
     component: AppComponent
-  }
+  },
 ];
 
 export const routing = RouterModule.forRoot(routes);

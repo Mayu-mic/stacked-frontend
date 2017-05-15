@@ -38,7 +38,7 @@ import { Angular2TokenService } from 'angular2-token';
     HeaderComponent,
     MainSectionComponent,
     ListsComponent,
-    FooterComponent
+    FooterComponent,
   ],
   providers: [
     Angular2TokenService,
