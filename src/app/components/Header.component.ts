@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'tsurami-header',
-  template: require('./Header.html')
+  selector: 'header-component',
+  template: require('./Header.component.html')
 })
 export class HeaderComponent {
 }

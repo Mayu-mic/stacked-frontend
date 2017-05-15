@@ -1,13 +1,9 @@
 import {StoreModule, combineReducers} from '@ngrx/store';
-import * as fromTsuramis from './tsuramis';
-import * as fromOrder from './order';
-import * as fromVisibility from './visibility';
+import * as fromLists from '../reducers/lists';
 
 const reducer = combineReducers(
     {
-        tsuramis: fromTsuramis.reducer,
-        order: fromOrder.reducer,
-        visibility: fromVisibility.reducer,
+        lists: fromLists.reducer,
     }
 );
 
