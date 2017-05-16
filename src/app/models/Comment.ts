@@ -1,8 +1,8 @@
 import { User } from './User';
-import { Item } from './Item';
+import { Stack } from './Stack';
 
 export interface Comment {
-    item: Item;
+    stack: Stack;
     body: string;
     stars_count: number;
     created_by: User;

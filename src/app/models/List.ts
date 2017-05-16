@@ -1,10 +1,10 @@
-import { Item } from './Item';
+import { Stack } from './Stack';
 import { ListStatus } from './ListStatus';
 import { User } from './User';
 
 export interface List {
     id: number;
-    items: Item[];
+    stacks: Stack[];
     name: string;
     order: number;
     status: ListStatus;

@@ -1,15 +1,15 @@
 import { List } from './List';
-import { ItemStatus } from './ItemStatus';
+import { StackStatus } from './StackStatus';
 import { User } from './User';
 import { Comment } from './Comment';
 
-export interface Item {
+export interface Stack {
     id: number;
     list: List;
     title: string;
     note: string;
     comments: Comment[];
-    status: ItemStatus;
+    status: StackStatus;
     created_by: User;
     createdAt: String;
     updatedAt: String;
