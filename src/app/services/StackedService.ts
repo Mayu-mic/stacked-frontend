@@ -20,10 +20,6 @@ export abstract class StackedService {
         });
     }
 
-    /**
-     * protected methods
-     */
-
     protected get<T>(url: string): Observable<T> {
         return this.tokenService.get(url)
             .map(res => res.json() as T)
@@ -51,16 +47,6 @@ export abstract class StackedService {
             .catch(this.handleError)
             ;
     }
-
-    // fetch(option: IFetchOption = defaultOption): Observable<Item[]> {
-    //     const opt = { ...defaultOption, ...option };
-    //     const params = this.generateFetchParams(opt);
-    //     const url = `${this.apiBase}/item?${params}`;
-    //     return this.http.get(url)
-    //         .map(res => res.json() as Tsurami[])
-    //         .catch(this.handleError)
-    //         ;
-    // }
 
     private handleError(error: any): Observable<any> {
         return Observable.throw(error.json().error || 'error');

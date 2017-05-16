@@ -1,13 +1,9 @@
 <header class="header">
-  <h3>Stacked.</h3>
-  <ul class="nav nav-pills pull-right">
-    <li class="active">
-      <a href="#" (click)="loginClick()" *ngIf="currentUser == null">
-        <i class="fa fa-slack" aria-hidden="true"></i> Login as Slack
-      </a>
-      <a href="#" (click)="logoutClick()" *ngIf="currentUser">
-        Logout (logined as {{currentUser.name}})
-      </a>
-    </li>
-  </ul>
+  <h1>Stacked.</h1>
+  <a href="#" (click)="loginClick()" *ngIf="currentUser == null">
+        Login as Slack
+  </a>
+  <a href="#" (click)="logoutClick()" *ngIf="currentUser">
+      Logout (logined as {{currentUser.name}})
+  </a>
 </header>
