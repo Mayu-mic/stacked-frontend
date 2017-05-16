@@ -10,6 +10,8 @@ export interface Stack {
     note: string;
     comments: Comment[];
     status: StackStatus;
+    star_count: number;
+    comment_count: number;
     created_by: User;
     createdAt: String;
     updatedAt: String;

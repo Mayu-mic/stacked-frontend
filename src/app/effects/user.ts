@@ -1,3 +1,4 @@
+import { of } from 'rxjs/observable/of';
 import { User } from '../models/User';
 import { Injectable } from '@angular/core';
 import { RequestLoginAction, RequestLogoutAction, RequestUserInfoAction } from '../actions/user';
@@ -32,7 +33,9 @@ export class UserEffects {
         .do(_ => this.tokenService.processOAuthCallback())
         .filter(_ => !!this.tokenService.currentAuthData)
         .switchMap((action: RequestUserInfoAction) =>
-            this.tokenService.validateToken().map(_ => new user.RequestUserInfoSuccessAction(this.tokenService.currentUserData))
+            this.tokenService.validateToken()
+                .map(_ => new user.RequestUserInfoSuccessAction(this.tokenService.currentUserData))
+                .catch(_ => of(new user.RequestUserInfoFailAction()))
         );
 
     private userService: StackedUserService;

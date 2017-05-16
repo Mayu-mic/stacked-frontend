@@ -1,3 +1,4 @@
+import { StacksEffects } from './effects/stacks';
 import { UserEffects } from './effects/user';
 import { RouterModule } from '@angular/router';
 import { StackedListService } from './services/StackedListService';
@@ -28,8 +29,9 @@ import { Angular2TokenService } from 'angular2-token';
     RouterModule,
     routing,
     store,
-    EffectsModule.run(ListsEffects),
     EffectsModule.run(UserEffects),
+    EffectsModule.run(ListsEffects),
+    EffectsModule.run(StacksEffects),
     BsDropdownModule.forRoot(),
   ],
   declarations: [

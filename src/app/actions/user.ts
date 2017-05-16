@@ -7,6 +7,7 @@ export const REQUEST_LOGOUT = '[User] Logout';
 export const REQUEST_LOGOUT_SUCCESS = '[User] Logout Success';
 export const REQUEST_USER_INFO = '[User] Request User Info';
 export const REQUEST_USER_INFO_SUCCESS = '[User] Request User Info Success';
+export const REQUEST_USER_INFO_FAIL = '[User] Request User Info Fail';
 
 export class RequestLoginAction implements Action {
     readonly type = REQUEST_LOGIN;
@@ -33,6 +34,10 @@ export class RequestUserInfoSuccessAction implements Action {
     constructor(public payload: User) {}
 }
 
+export class RequestUserInfoFailAction implements Action {
+    readonly type = REQUEST_USER_INFO_FAIL;
+}
+
 export type Actions
     = RequestLoginAction
     | RequestLoginSuccessAction
@@ -40,4 +45,5 @@ export type Actions
     | RequestLogoutSuccessAction
     | RequestUserInfoAction
     | RequestUserInfoSuccessAction
+    | RequestUserInfoFailAction
     ;

@@ -46,48 +46,28 @@
             </footer>
         </div>
 
-        <!-- card 1 -->
-        <div class="card stack-card">
-            <div class="card-header">
-                #1
-            </div>
-            <div class="card-block">
-                <h4 class="card-title">Special title treatment</h4>
-                <p class="card-text text-muted">
-                    With supporting text below as a natural...
-                    <a href="#" class="read-more">more</a>
-                </p>
-                <div class="card-text text-right">
-                    <small>
-                        by <img src="https://avatars.slack-edge.com/2016-10-14/91327923093_bb6cd5d269c7d74e3c61_192.gif" /> UserName
-                    </small>
+        <template ngFor let-stack [ngForOf]="(stacks$ | async)">
+            <div class="card stack-card">
+                <div class="card-header">#1</div>
+                <div class="card-block">
+                    <h4 class="card-title">{{stack.title}}</h4>
+                    <p class="card-text text-muted" *ngIf="stack.note == ''">
+                        {{stack.note}}
+                        <a href="" class="read-more">more</a>
+                    </p>
+                    <div class="card-text text-right">
+                        <small>
+                            by <img src="{{stack.created_by.image}}" /> {{stack.created_by.nickname}}
+                        </small>
+                    </div>
                 </div>
+                <footer class="stack-button">
+                    <a href="#" class="btn btn-success"><span class="badge badge-pill badge-success">{{stack.comment_count}}</span> Comments</a>
+                    <a href="#" class="btn btn-primary"><span class="badge badge-pill badge-primary">{{stack.star_count}}</span> Likes</a>
+                </footer>
             </div>
-            <footer class="stack-button">
-                <a href="#" class="btn btn-success"><span class="badge badge-pill badge-success">3</span> Comments</a>
-                <a href="#" class="btn btn-primary"><span class="badge badge-pill badge-primary">12</span> Likes</a>
-            </footer>
-        </div>
+        </template>
 
-        <!-- card 2 -->
-        <div class="card stack-card">
-            <div class="card-header">
-                #2
-            </div>
-            <div class="card-block">
-                <h4 class="card-title">Special title treatment</h4>
-                <div class="text-right">
-                    <small class="card-text">
-                        by <img src="https://avatars.slack-edge.com/2016-10-14/91327923093_bb6cd5d269c7d74e3c61_192.gif" /> UserName
-                    </small>
-                </div>
-            </div>
-            <footer class="stack-button">
-                <a href="#" class="btn btn-success"><span class="badge badge-pill badge-success">3</span> Comments</a>
-                <a href="#" class="btn btn-primary"><span class="badge badge-pill badge-primary">12</span> Likes</a>
-            </footer>
-        </div>
     </div>
-
 </section>
 </div>
