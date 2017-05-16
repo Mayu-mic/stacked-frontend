@@ -1,4 +1,93 @@
 <style>
+    .stack-card .card-header {
+        background-color: 'white'
+    }
+
+    .stack-card .stack-button {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .stack-card .stack-button .btn {
+        border-radius: 0;
+        flex-grow: 1;
+        text-align: center;
+        color: white;
+        font-size: 0.8em;
+    }
+
+    .stack-card .card-text img {
+        width: 18px;
+        height: 18px;
+    }
+
 </style>
+<div class="container">
 <section class="main">
+    <div class="card-columns">
+
+        <!-- form -->
+        <div class="card stack-card add-form">
+            <div class="card-header">
+                Create New Stack
+            </div>
+            <div class="card-block">
+                <div class="form-group">
+                    <label for="stack-title-input">Title</label>
+                    <input class="form-control" type="text" id="stack-title-input">
+                </div>
+                <div class="form-group">
+                    <label for="stack-note">Note</label>
+                    <textarea class="form-control" id="stack-note" placeholder="(Optional)"></textarea>
+                </div>
+            </div>
+            <footer class="stack-button">
+                <button type="submit" class="btn btn-warning">+ stack</button>
+            </footer>
+        </div>
+
+        <!-- card 1 -->
+        <div class="card stack-card">
+            <div class="card-header">
+                #1
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">Special title treatment</h4>
+                <p class="card-text text-muted">
+                    With supporting text below as a natural...
+                    <a href="#" class="read-more">more</a>
+                </p>
+                <div class="card-text text-right">
+                    <small>
+                        by <img src="https://avatars.slack-edge.com/2016-10-14/91327923093_bb6cd5d269c7d74e3c61_192.gif" /> UserName
+                    </small>
+                </div>
+            </div>
+            <footer class="stack-button">
+                <a href="#" class="btn btn-success"><span class="badge badge-pill badge-success">3</span> Comments</a>
+                <a href="#" class="btn btn-primary"><span class="badge badge-pill badge-primary">12</span> Likes</a>
+            </footer>
+        </div>
+
+        <!-- card 2 -->
+        <div class="card stack-card">
+            <div class="card-header">
+                #2
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">Special title treatment</h4>
+                <div class="text-right">
+                    <small class="card-text">
+                        by <img src="https://avatars.slack-edge.com/2016-10-14/91327923093_bb6cd5d269c7d74e3c61_192.gif" /> UserName
+                    </small>
+                </div>
+            </div>
+            <footer class="stack-button">
+                <a href="#" class="btn btn-success"><span class="badge badge-pill badge-success">3</span> Comments</a>
+                <a href="#" class="btn btn-primary"><span class="badge badge-pill badge-primary">12</span> Likes</a>
+            </footer>
+        </div>
+    </div>
+
 </section>
+</div>
