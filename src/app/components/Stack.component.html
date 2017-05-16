@@ -1,0 +1,43 @@
+<style>
+    .stack-card .card-header {
+        background-color: 'white'
+    }
+
+    .stack-card .stack-button {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .stack-card .stack-button .btn {
+        border-radius: 0;
+        flex-grow: 1;
+        text-align: center;
+        color: white;
+        font-size: 0.8em;
+    }
+
+    .stack-card .card-text img {
+        width: 18px;
+        height: 18px;
+    }
+</style>
+
+<div class="card stack-card">
+    <div class="card-header">#{{stackNo}}</div>
+    <div class="card-block">
+        <h4 class="card-title">{{stack.title}}</h4>
+        <p class="card-text text-muted" *ngIf="stack.note == ''">
+            {{stack.note}}
+            <a href="" class="read-more">more</a>
+        </p>
+        <div class="card-text text-right">
+            <small>
+                by <img src="{{stack.created_by.image}}" /> {{stack.created_by.nickname}}
+            </small>
+        </div>
+    </div>
+    <footer class="stack-button">
+        <a href="#" class="btn btn-success"><span class="badge badge-pill badge-success">{{stack.comment_count}}</span> Comments</a>
+        <a href="#" class="btn btn-primary"><span class="badge badge-pill badge-primary">{{stack.star_count}}</span> Likes</a>
+    </footer>
+</div>

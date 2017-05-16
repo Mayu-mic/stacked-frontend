@@ -1,3 +1,4 @@
+import { StackComponent } from './components/Stack.component';
 import { StacksEffects } from './effects/stacks';
 import { UserEffects } from './effects/user';
 import { RouterModule } from '@angular/router';
@@ -41,6 +42,7 @@ import { Angular2TokenService } from 'angular2-token';
     MainSectionComponent,
     ListsComponent,
     FooterComponent,
+    StackComponent
   ],
   providers: [
     Angular2TokenService,
