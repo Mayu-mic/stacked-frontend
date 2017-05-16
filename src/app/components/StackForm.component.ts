@@ -3,9 +3,10 @@ import { Stack } from '../models/Stack';
 import { Observable } from 'rxjs/Rx';
 import { Component, EventEmitter, Output } from '@angular/core';
 
-interface FormValue {
+export interface StackFormValue {
     title: string;
     note: string;
+    listId: number;
 }
 
 @Component({
@@ -13,7 +14,7 @@ interface FormValue {
     template: require('./StackForm.component.html'),
 })
 export class StackFormComponent {
-    @Output() handleSubmit: EventEmitter<FormValue> = new EventEmitter(false);
+    @Output() handleSubmit: EventEmitter<StackFormValue> = new EventEmitter(false);
 
     stackForm: FormGroup;
 
@@ -27,8 +28,15 @@ export class StackFormComponent {
     submit(event: Event) {
         event.preventDefault();
         if (!this.stackForm.invalid) {
-            this.handleSubmit.emit(this.stackForm.value);
-            this.stackForm.reset();
+            const value = {
+                listId: 1,
+                ...this.stackForm.value
+            };
+            this.handleSubmit.emit(value);
+            this.stackForm.reset({
+                title: '',
+                note: ''
+            });
         }
     }
 }

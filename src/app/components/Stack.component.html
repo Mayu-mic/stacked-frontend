@@ -26,7 +26,7 @@
     <div class="card-header">#{{stackNo}}</div>
     <div class="card-block">
         <h4 class="card-title">{{stack.title}}</h4>
-        <p class="card-text text-muted" *ngIf="stack.note == ''">
+        <p class="card-text text-muted" *ngIf="stack.note != ''">
             {{stack.note}}
             <a href="" class="read-more">more</a>
         </p>

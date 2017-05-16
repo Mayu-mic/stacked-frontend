@@ -9,6 +9,9 @@ export function reducer(state = initialState, action: fromStack.Actions) {
         case fromStack.REQUEST_STACKS_SUCCESS:
             return action.payload;
 
+        case fromStack.ADD_STACK_SUCCESS:
+            return [ action.payload, ...state ];
+
         default:
             return state;
     }

@@ -24,24 +24,30 @@ export abstract class StackedService {
     }
 
     protected post<T>(url: string, body: any): Observable<T> {
-        return this.tokenService.post(url, body)
-            .map(res => res.json() as T)
-            .catch(this.handleError)
-            ;
+        return this.tokenService.validateToken()
+            .switchMap(_ =>
+                this.tokenService.post(url, body)
+                    .map(res => res.json() as T)
+                    .catch(this.handleError)
+            );
     }
 
     protected patch<T>(url: string, body: any): Observable<T> {
-        return this.tokenService.patch(url, body)
-            .map(res => res.json() as T)
-            .catch(this.handleError)
-            ;
+        return this.tokenService.validateToken()
+            .switchMap(_ =>
+                this.tokenService.patch(url, body)
+                    .map(res => res.json() as T)
+                    .catch(this.handleError)
+            );
     }
 
     protected delete<T>(url: string): Observable<T> {
-        return this.tokenService.delete(url)
-            .map(res => res.json() as T)
-            .catch(this.handleError)
-            ;
+        return this.tokenService.validateToken()
+            .switchMap(_ =>
+                this.tokenService.delete(url)
+                    .map(res => res.json() as T)
+                    .catch(this.handleError)
+            );
     }
 
     private handleError(error: any): Observable<any> {

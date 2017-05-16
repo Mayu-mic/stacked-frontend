@@ -1,3 +1,4 @@
+import { StackFormValue } from './StackForm.component';
 import { Stack } from '../models/Stack';
 import { List } from '../models/List';
 import { StackedListService } from '../services/StackedListService';
@@ -31,5 +32,9 @@ export class MainSectionComponent implements OnInit {
     ngOnInit(): void {
         const listId = 1; // 決め打ち
         this.store.dispatch(new fromStacks.RequestStacksAction(listId));
+    }
+
+    addStack(value: StackFormValue) {
+        this.store.dispatch(new fromStacks.AddStackAction(value));
     }
 }

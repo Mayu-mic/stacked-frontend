@@ -1,4 +1,4 @@
-import { RequestStacksAction } from '../actions/stacks';
+import { AddStackAction, RequestStacksAction } from '../actions/stacks';
 import { StackedStackService } from '../services/StackedStackService';
 import { Angular2TokenService } from 'angular2-token';
 import { StackedListService } from '../services/StackedListService';
@@ -21,6 +21,15 @@ export class StacksEffects {
             this.stackService.getStacks(action.payload)
                 .map(stacks => new fromStacks.RequestStacksSuccessAction(stacks))
                 .catch(_ => of(new fromStacks.RequestStacksFailAction()))
+        );
+
+    @Effect()
+    addStack$: Observable<Action> = this.action$
+        .ofType(fromStacks.ADD_STACK)
+        .switchMap((action: AddStackAction) =>
+            this.stackService.addStack(action.payload.listId, action.payload.title, action.payload.note)
+                .map(stack => new fromStacks.AddStackSuccessAction(stack))
+                .catch(_ => of(new fromStacks.AddStackFailAction()))
         );
 
     private stackService: StackedStackService;

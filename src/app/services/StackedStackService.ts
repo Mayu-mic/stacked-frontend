@@ -17,12 +17,11 @@ export class StackedStackService extends StackedService {
         return this.get<Stack>(url);
     }
 
-    addStack(listId: number, title: string, note: string): Observable<Stack> {
-        const url = `/lists/${listId}/stacks`;
+    addStack(listId: number, title: string, note: string = ''): Observable<Stack> {
+        const url = `lists/${listId}/stacks`;
         return this.post<Stack>(url, {
             title,
-            note,
-            status,
+            note
         });
     }
 

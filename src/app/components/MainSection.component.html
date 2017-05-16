@@ -1,8 +1,7 @@
 <div class="container">
 <section class="main">
     <div class="card-columns">
-        <!-- form -->
-        <stack-form-component></stack-form-component>
+        <stack-form-component (handleSubmit)="addStack($event)"></stack-form-component>
 
         <template ngFor let-stack let-i="index" [ngForOf]="(stacks$ | async)">
             <stack-component [stack]="stack" [stackNo]="i+1"></stack-component>
