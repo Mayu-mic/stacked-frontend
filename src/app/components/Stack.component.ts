@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Stack } from '../models/Stack';
 
 @Component({
@@ -8,4 +8,10 @@ import { Stack } from '../models/Stack';
 export class StackComponent {
     @Input() stack: Stack;
     @Input() stackNo: number;
+    @Output() handleLike: EventEmitter<number> = new EventEmitter(false);
+
+    like(e: Event) {
+        e.preventDefault();
+        this.handleLike.emit(this.stack.id);
+    }
 }

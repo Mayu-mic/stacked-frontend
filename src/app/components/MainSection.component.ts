@@ -37,4 +37,8 @@ export class MainSectionComponent implements OnInit {
     addStack(value: StackFormValue) {
         this.store.dispatch(new fromStacks.AddStackAction(value));
     }
+
+    addLike(stackId: number) {
+        this.store.dispatch(new fromStacks.AddLikeAction(stackId));
+    }
 }

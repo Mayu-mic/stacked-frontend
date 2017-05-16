@@ -8,12 +8,12 @@ import { StackStatus } from '../models/StackStatus';
 export class StackedStackService extends StackedService {
 
     getStacks(listId: number): Observable<Stack[]> {
-        const url = `/lists/${listId}/stacks`;
+        const url = `lists/${listId}/stacks`;
         return this.get<Stack[]>(url);
     }
 
     getStack(stackId: number): Observable<Stack> {
-        const url = `/stacks/${stackId}`;
+        const url = `stacks/${stackId}`;
         return this.get<Stack>(url);
     }
 
@@ -26,7 +26,7 @@ export class StackedStackService extends StackedService {
     }
 
     updateStack(stackId: number, title: string, note: string): Observable<Stack> {
-        const url = `/stacks/${stackId}`;
+        const url = `stacks/${stackId}`;
         return this.patch<Stack>(url, {
             title,
             note,
@@ -34,14 +34,23 @@ export class StackedStackService extends StackedService {
     }
 
     changeStackStatus(stackId: number, status: StackStatus): Observable<Stack> {
-        const url = `/stacks/${stackId}`;
+        const url = `stacks/${stackId}`;
         return this.patch<Stack>(url, {
             status,
         });
     }
 
     deleteStack(stackId: number): Observable<any> {
-        const url = `/stacks/${stackId}`;
+        const url = `stacks/${stackId}`;
         return this.delete<any>(url);
+    }
+
+    addLike(stackId: number): Observable<Stack> {
+        const url = `stacks/${stackId}/star`;
+        return this.post<Stack>(url, {
+            stack_star: {
+                stack_id: stackId
+            }
+        });
     }
 }

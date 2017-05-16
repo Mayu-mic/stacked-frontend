@@ -8,12 +8,12 @@ import { ListStatus } from '../models/ListStatus';
 export class StackedListService extends StackedService {
 
     getLists(): Observable<List[]> {
-        const url = `/lists`;
+        const url = `lists`;
         return this.get<List[]>(url);
     }
 
     postList(name: string, status: ListStatus): Observable<List> {
-        const url = `/lists`;
+        const url = `lists`;
         return this.post<List>(url, {
             name,
             status
@@ -21,7 +21,7 @@ export class StackedListService extends StackedService {
     }
 
     updateList(listId: number, name: string, status: ListStatus): Observable<List> {
-        const url = `/lists/${listId}`;
+        const url = `lists/${listId}`;
         return this.patch<List>(url, {
             name,
             status
