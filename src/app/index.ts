@@ -1,3 +1,8 @@
+import { StackEffects } from './effects/stack';
+import { StackContainer } from './containers/Stack.container';
+import { MainSectionContainer } from './containers/MainSection.container';
+import { StacksPage } from './pages/stacks.page';
+import { IndexPage } from './pages/Index.page';
 import { StackFormComponent } from './components/StackForm.component';
 import { StackComponent } from './components/Stack.component';
 import { StacksEffects } from './effects/stacks';
@@ -6,7 +11,6 @@ import { RouterModule } from '@angular/router';
 import { StackedListService } from './services/StackedListService';
 import { ListsEffects } from './effects/lists';
 import { ListsComponent } from './components/Lists.component';
-import { MainSectionComponent } from './components/MainSection.component';
 import { FooterComponent } from './components/Footer.component';
 import { HeaderComponent } from './components/Header.component';
 import { HttpModule } from '@angular/http';
@@ -15,8 +19,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {routing, RootComponent} from './routes';
 import {store} from './reducers';
-
-import {AppComponent} from './containers/App';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EffectsModule } from '@ngrx/effects';
@@ -34,13 +36,19 @@ import { Angular2TokenService } from 'angular2-token';
     EffectsModule.run(UserEffects),
     EffectsModule.run(ListsEffects),
     EffectsModule.run(StacksEffects),
+    EffectsModule.run(StackEffects),
     BsDropdownModule.forRoot(),
   ],
   declarations: [
     RootComponent,
-    AppComponent,
+
+    IndexPage,
+    StacksPage,
+
+    MainSectionContainer,
+    StackContainer,
+
     HeaderComponent,
-    MainSectionComponent,
     ListsComponent,
     FooterComponent,
     StackComponent,

@@ -1,6 +1,7 @@
+import { StacksPage } from './pages/stacks.page';
+import { IndexPage } from './pages/Index.page';
 import {Component} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AppComponent} from './containers/App';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +12,11 @@ export class RootComponent {}
 export const routes: Routes = [
   {
     path: '',
-    component: AppComponent
+    component: IndexPage
   },
   {
-    path: ':page',
-    component: AppComponent
+    path: 'stacks/:stackId',
+    component: StacksPage
   },
 ];
 

@@ -1,4 +1,4 @@
-import { StackFormValue } from './StackForm.component';
+import { StackFormValue } from '../components/StackForm.component';
 import { Stack } from '../models/Stack';
 import { List } from '../models/List';
 import { StackedListService } from '../services/StackedListService';
@@ -14,10 +14,10 @@ interface RouteParams {
 }
 
 @Component({
-  selector: 'main-section-component',
-  template: require('./MainSection.component.html')
+  selector: 'main-section-container',
+  template: require('./MainSection.container.html')
 })
-export class MainSectionComponent implements OnInit {
+export class MainSectionContainer implements OnInit {
 
     lists$: Observable<List[]>;
     stacks$: Observable<Stack[]>;

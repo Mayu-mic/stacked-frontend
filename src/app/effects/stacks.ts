@@ -8,7 +8,6 @@ import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
-import * as lists from '../actions/lists';
 import * as fromStacks from '../actions/stacks';
 
 @Injectable()
