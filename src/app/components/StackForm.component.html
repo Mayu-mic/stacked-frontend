@@ -1,0 +1,46 @@
+<style>
+    .stack-card .stack-button {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .stack-card .stack-button .btn {
+        border-radius: 0;
+        flex-grow: 1;
+        text-align: center;
+        color: white;
+        font-size: 0.8em;
+    }
+</style>
+<div class="card stack-card add-form">
+    <div class="card-header">
+        Create New Stack
+    </div>
+    <form [formGroup]="stackForm" (ngSubmit)="submit($event)">
+        <div class="card-block">
+            <div class="form-group">
+                <label for="stack-title-input">Title</label>
+                <input 
+                    class="form-control"
+                    type="text"
+                    id="stack-title-input"
+                    [formControl]="stackForm.controls['title']"
+                    placeholder="(required)"
+                />
+            </div>
+            <div class="form-group">
+                <label for="stack-note">Note</label>
+                <textarea
+                    class="form-control"
+                    id="stack-note"
+                    placeholder="(optional)"
+                    [formControl]="stackForm.controls['note']"
+                    >
+                </textarea>
+            </div>
+        </div>
+        <footer class="stack-button">
+            <button type="submit" class="btn btn-warning">+ stack</button>
+        </footer>
+    </form>
+</div>

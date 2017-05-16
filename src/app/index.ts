@@ -1,3 +1,4 @@
+import { StackFormComponent } from './components/StackForm.component';
 import { StackComponent } from './components/Stack.component';
 import { StacksEffects } from './effects/stacks';
 import { UserEffects } from './effects/user';
@@ -11,7 +12,7 @@ import { HeaderComponent } from './components/Header.component';
 import { HttpModule } from '@angular/http';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {routing, RootComponent} from './routes';
 import {store} from './reducers';
 
@@ -25,7 +26,7 @@ import { Angular2TokenService } from 'angular2-token';
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule,
     routing,
@@ -42,7 +43,8 @@ import { Angular2TokenService } from 'angular2-token';
     MainSectionComponent,
     ListsComponent,
     FooterComponent,
-    StackComponent
+    StackComponent,
+    StackFormComponent
   ],
   providers: [
     Angular2TokenService,

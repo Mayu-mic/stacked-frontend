@@ -1,26 +1,8 @@
 <div class="container">
 <section class="main">
     <div class="card-columns">
-
         <!-- form -->
-        <div class="card stack-card add-form">
-            <div class="card-header">
-                Create New Stack
-            </div>
-            <div class="card-block">
-                <div class="form-group">
-                    <label for="stack-title-input">Title</label>
-                    <input class="form-control" type="text" id="stack-title-input">
-                </div>
-                <div class="form-group">
-                    <label for="stack-note">Note</label>
-                    <textarea class="form-control" id="stack-note" placeholder="(Optional)"></textarea>
-                </div>
-            </div>
-            <footer class="stack-button">
-                <button type="submit" class="btn btn-warning">+ stack</button>
-            </footer>
-        </div>
+        <stack-form-component></stack-form-component>
 
         <template ngFor let-stack let-i="index" [ngForOf]="(stacks$ | async)">
             <stack-component [stack]="stack" [stackNo]="i+1"></stack-component>
