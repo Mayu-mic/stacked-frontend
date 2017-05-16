@@ -19,6 +19,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {routing, RootComponent} from './routes';
 import {store} from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EffectsModule } from '@ngrx/effects';
@@ -38,6 +39,9 @@ import { Angular2TokenService } from 'angular2-token';
     EffectsModule.run(StacksEffects),
     EffectsModule.run(StackEffects),
     BsDropdownModule.forRoot(),
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 10
+    })
   ],
   declarations: [
     RootComponent,
