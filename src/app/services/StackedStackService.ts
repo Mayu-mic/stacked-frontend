@@ -20,23 +20,30 @@ export class StackedStackService extends StackedService {
     addStack(listId: number, title: string, note: string = ''): Observable<Stack> {
         const url = `lists/${listId}/stacks`;
         return this.post<Stack>(url, {
-            title,
-            note
+            stack: {
+                list_id: listId,
+                title,
+                note
+            }
         });
     }
 
     updateStack(stackId: number, title: string, note: string): Observable<Stack> {
         const url = `stacks/${stackId}`;
         return this.patch<Stack>(url, {
-            title,
-            note,
+            stack: {
+                title,
+                note,
+            }
         });
     }
 
     changeStackStatus(stackId: number, status: StackStatus): Observable<Stack> {
         const url = `stacks/${stackId}`;
         return this.patch<Stack>(url, {
-            status,
+            stack: {
+                status
+            }
         });
     }
 
