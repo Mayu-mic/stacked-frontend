@@ -1,9 +1,8 @@
-<header-component></header-component>
-
 <div class="container">
     <section class="main">
-        <stack-container></stack-container>
+        <stack-container [stackId]="currentStackId"></stack-container>
+
+        <h2>Comments</h2>
+        <comments-container [stackId]="currentStackId"></comments-container>
     </section>
 </div>
-
-<footer-component></footer-component>

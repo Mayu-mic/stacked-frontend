@@ -1,0 +1,15 @@
+<div class="card-columns">
+    <stack-create-form-component
+        [listId]="listId"
+        (handleSubmit)="addStack($event)"
+    ></stack-create-form-component>
+
+    <template ngFor let-stack [ngForOf]="(stacks$ | async)">
+        <stack-component
+            [stack]="stack"
+            [single]="false"
+            [owned]="(user$ | async)?.id === stack.created_by.id"
+            (handleLike)="addLike($event)"
+        ></stack-component>
+    </template>
+</div>

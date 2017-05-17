@@ -1,14 +1,14 @@
-import { StackEditFormComponent } from './components/StackEditForm.component';
+import { CommentsContainer } from './containers/Comments.container';
+import { StacksContainer } from './containers/Stacks.container';
 import { RootPage } from './pages/Root.page';
+import { StackEditFormComponent } from './components/StackEditForm.component';
 import { CommentFormComponent } from './components/CommentForm.component';
 import { CommentEffects } from './effects/comment';
 import { CommentItemComponent } from './components/CommentItem.component';
 import { StackEffects } from './effects/stack';
 import { StackContainer } from './containers/Stack.container';
-import { MainSectionContainer } from './containers/MainSection.container';
 import { StacksPage } from './pages/stacks.page';
 import { IndexPage } from './pages/Index.page';
-import { StackFormComponent } from './components/StackForm.component';
 import { StackComponent } from './components/Stack.component';
 import { StacksEffects } from './effects/stacks';
 import { UserEffects } from './effects/user';
@@ -22,7 +22,7 @@ import { HttpModule } from '@angular/http';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {routing } from './routes';
+import { routing } from './routes';
 import {store} from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MarkdownModule } from 'angular2-markdown';
@@ -32,6 +32,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { Angular2TokenService } from 'angular2-token';
 import { OAuthCallbackPage } from './pages/OAuthCallback.page';
+import { StackCreateFormComponent } from './components/StackCreateForm.component';
 
 @NgModule({
   imports: [
@@ -58,14 +59,15 @@ import { OAuthCallbackPage } from './pages/OAuthCallback.page';
     StacksPage,
     OAuthCallbackPage,
 
-    MainSectionContainer,
+    StacksContainer,
     StackContainer,
+    CommentsContainer,
 
     HeaderComponent,
     ListsComponent,
     FooterComponent,
     StackComponent,
-    StackFormComponent,
+    StackCreateFormComponent,
     CommentItemComponent,
     CommentFormComponent,
     StackEditFormComponent,

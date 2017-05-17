@@ -7,20 +7,16 @@ import { Stack } from '../models/Stack';
 import { Observable } from 'rxjs/Rx';
 import { Component, Input, OnInit } from '@angular/core';
 import * as fromStack from '../actions/stack';
-import * as fromComments from '../actions/comments';
-
-interface RouteParams {
-    stackId: number;
-}
 
 @Component({
     selector: 'stack-container',
     template: require('./Stack.container.html')
 })
 export class StackContainer implements OnInit {
+    @Input() stackId: number;
+
     user$: Observable<User>;
     stack$: Observable<Stack>;
-    comments$: Observable<Comment[]>;
 
     currentStack: Stack = null;
     currentUser: User = null;
@@ -28,34 +24,20 @@ export class StackContainer implements OnInit {
     stackEditing = false;
 
     constructor(
-        private store: Store<any>,
-        private route: ActivatedRoute
+        private store: Store<any>
     ) {
         this.user$ = store.select('user');
         this.stack$ = store.select('stack');
-        this.comments$ = store.select('comments');
     }
 
     ngOnInit(): void {
-        this.route.params
-            .subscribe((p: RouteParams) => {
-                this.user$.subscribe(user => this.currentUser = user);
-                this.stack$.subscribe(stack => this.currentStack = stack);
-                this.store.dispatch(new fromStack.RequestStackAction(p.stackId));
-                this.store.dispatch(new fromComments.RequestCommentsAction(p.stackId));
-            });
+        this.user$.subscribe(user => this.currentUser = user);
+        this.stack$.subscribe(stack => this.currentStack = stack);
+        this.store.dispatch(new fromStack.RequestStackAction(this.stackId));
     }
 
     addStackLike() {
         this.store.dispatch(new fromStack.AddLikeAction(this.currentStack.id));
-    }
-
-    addCommentLike(commentId: number) {
-        this.store.dispatch(new fromComments.LikeCommentAction(commentId));
-    }
-
-    addComment(value: CommentFormValue) {
-        this.store.dispatch(new fromComments.AddCommentAction(value));
     }
 
     toggleEditMode() {

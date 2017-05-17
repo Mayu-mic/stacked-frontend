@@ -1,6 +1,6 @@
-import { StackFormValue } from '../components/StackForm.component';
 import { Stack } from '../models/Stack';
 import { Action } from '@ngrx/store';
+import { StackCreateFormValue } from '../components/StackCreateForm.component';
 
 export const REQUEST_STACKS = '[Stacks] Request';
 export const REQUEST_STACKS_SUCCESS = '[Stacks] Request Success';
@@ -26,7 +26,7 @@ export class RequestStacksFailAction implements Action {
 
 export class AddStackAction implements Action {
     readonly type = ADD_STACK;
-    constructor(public payload: StackFormValue) {}
+    constructor(public payload: StackCreateFormValue) {}
 }
 
 export class AddStackSuccessAction implements Action {

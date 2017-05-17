@@ -1,6 +1,5 @@
 <stack-component 
     [stack]="currentStack"
-    [stackNo]="0"
     [single]="true"
     [owned]="currentUser && (currentUser?.id === currentStack?.created_by.id)"
     (handleLike)="addStackLike()"
@@ -14,18 +13,3 @@
     (handleCancel)="toggleEditMode()"
     *ngIf="stackEditing"
 ></stack-edit-form-component>
-
-
-<h2>Comments</h2>
-
-<template ngFor let-comment [ngForOf]="(comments$ | async)">
-    <comment-item-component
-        [comment]="comment"
-        (handleLike)="addCommentLike($event)"
-    ></comment-item-component>
-</template>
-
-<comment-form-component
-    [stackId]="currentStack?.id"
-    (handleSubmit)="addComment($event)"
-></comment-form-component>

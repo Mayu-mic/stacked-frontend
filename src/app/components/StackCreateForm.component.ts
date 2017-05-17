@@ -1,20 +1,21 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Stack } from '../models/Stack';
 import { Observable } from 'rxjs/Rx';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-export interface StackFormValue {
+export interface StackCreateFormValue {
     title: string;
     note: string;
     listId: number;
 }
 
 @Component({
-    selector: 'stack-form-component',
-    template: require('./StackForm.component.html'),
+    selector: 'stack-create-form-component',
+    template: require('./StackCreateForm.component.html'),
 })
-export class StackFormComponent {
-    @Output() handleSubmit: EventEmitter<StackFormValue> = new EventEmitter(false);
+export class StackCreateFormComponent {
+    @Output() handleSubmit: EventEmitter<StackCreateFormValue> = new EventEmitter(false);
+    @Input() listId: number;
 
     stackForm: FormGroup;
 
@@ -30,7 +31,7 @@ export class StackFormComponent {
         if (this.stackForm.valid) {
             const value = {
                 ...this.stackForm.value,
-                listId: 1,
+                listId: this.listId,
             };
             this.handleSubmit.emit(value);
             this.stackForm.reset({

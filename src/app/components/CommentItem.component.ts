@@ -7,7 +7,7 @@ import { Comment } from '../models/comment';
 })
 export class CommentItemComponent {
     @Input() comment: Comment;
-    @Output() handleLike: EventEmitter<any> = new EventEmitter(false)
+    @Output() handleLike: EventEmitter<any> = new EventEmitter(false);
 
     like(e: Event) {
         e.preventDefault();

@@ -24,7 +24,7 @@ export function reducer(state = initialState, action: fromStack.Actions | fromCo
                 title: action.payload.title,
                 note: action.payload.note,
             } : state;
- 
+
         case fromStack.ADD_LIKE:
             return state ? {
                 ...state,

@@ -1,5 +1,4 @@
 import { User } from '../models/User';
-import { StackFormValue } from '../components/StackForm.component';
 import { Stack } from '../models/Stack';
 import { List } from '../models/List';
 import { StackedListService } from '../services/StackedListService';
@@ -10,35 +9,34 @@ import {Observable} from 'rxjs/Rx';
 import * as fromLists from '../actions/lists';
 import * as fromStacks from '../actions/stacks';
 import * as fromStack from '../actions/stack';
+import { StackCreateFormValue } from '../components/StackCreateForm.component';
 
 interface RouteParams {
     page: number;
 }
 
 @Component({
-  selector: 'main-section-container',
-  template: require('./MainSection.container.html')
+  selector: 'stacks-container',
+  template: require('./Stacks.container.html')
 })
-export class MainSectionContainer implements OnInit {
-
-    lists$: Observable<List[]>;
+export class StacksContainer implements OnInit {
     stacks$: Observable<Stack[]>;
     user$: Observable<User>;
+
+    listId = 1; // 決め打ち
 
     constructor(
         private store: Store<any>
     ) {
-        this.lists$ = store.select('lists');
         this.stacks$ = store.select('stacks');
         this.user$ = store.select('user');
     }
 
     ngOnInit(): void {
-        const listId = 1; // 決め打ち
-        this.store.dispatch(new fromStacks.RequestStacksAction(listId));
+        this.store.dispatch(new fromStacks.RequestStacksAction(this.listId));
     }
 
-    addStack(value: StackFormValue) {
+    addStack(value: StackCreateFormValue) {
         this.store.dispatch(new fromStacks.AddStackAction(value));
     }
 

@@ -19,7 +19,7 @@ export function reducer(state = initialState, action: fromComments.Actions) {
                     ...comment,
                 } : comment
             );
- 
+
         case fromComments.LIKE_COMMENT_SUCCESS:
             return state.map(comment =>
                 comment.id === action.payload.id ? action.payload : comment

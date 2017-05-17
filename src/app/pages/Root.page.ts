@@ -1,11 +1,7 @@
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Rx';
-import { User } from '../models/User';
-import { Component, OnInit } from '@angular/core';
-import * as fromUser from '../actions/user';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  template: '<router-outlet></router-outlet>'
+    selector: 'app-root',
+    template: require('./Root.page.html')
 })
 export class RootPage {}

@@ -1,0 +1,11 @@
+<template ngFor let-comment [ngForOf]="(comments$ | async)">
+    <comment-item-component
+        [comment]="comment"
+        (handleLike)="addCommentLike($event)"
+    ></comment-item-component>
+</template>
+
+<comment-form-component
+    [stackId]="stackId"
+    (handleSubmit)="addComment($event)"
+></comment-form-component>

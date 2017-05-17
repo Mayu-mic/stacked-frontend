@@ -7,7 +7,6 @@ import { Stack } from '../models/Stack';
 })
 export class StackComponent {
     @Input() stack: Stack;
-    @Input() stackNo: number;
     @Input() single: boolean;
     @Input() owned: boolean;
     @Output() handleLike: EventEmitter<number> = new EventEmitter(false);
