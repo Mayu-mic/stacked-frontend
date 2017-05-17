@@ -1,21 +1,18 @@
-<style>
-    .user_image {
-        width: 18px;
-        height: 18px;
-    }
-</style>
-<div class="card" *ngIf="comment">
-    <h4 class="card-title">{{comment.body}}</h4>
-    <small>
-        by <img src="{{comment.created_by.image}}" class="user_image"/> {{comment.created_by.nickname}}
-    </small>
-
-    <footer class="stack-button">
-        <button
-            class="btn btn-primary"
-            [attr.disabled]="owned ? true : null"
-            (click)="like($event)">
-            <span class="badge badge-pill badge-primary">{{comment.star_count}}</span> Likes
-        </button>
-    </footer>
+<div class="card comment-item" *ngIf="comment">
+    <div class="card-block">
+        <div class="card-text">
+            {{comment.body}}
+            <button
+                class="btn btn-info btn-sm"
+                [attr.disabled]="owned ? true : null"
+                (click)="like($event)">
+                <span class="badge badge-pill badge-info">{{comment.star_count}}</span> Likes
+            </button>
+        </div>
+        <div class="card-text text-right">
+            <small class="user-name">
+                by <img src="{{comment.created_by.image}}" /> {{comment.created_by.nickname}}
+            </small>
+        </div>
+    </div>
 </div>

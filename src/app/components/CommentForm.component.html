@@ -1,36 +1,18 @@
-<style>
-    .stack-card .stack-button {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .stack-card .stack-button .btn {
-        border-radius: 0;
-        flex-grow: 1;
-        text-align: center;
-        color: white;
-        font-size: 0.8em;
-    }
-</style>
-<div class="card stack-card add-comment-form">
+<div class="card stack-item create-comment-form">
     <div class="card-header">
         Create New Comment
     </div>
     <form [formGroup]="commentForm" (ngSubmit)="submit($event)">
-        <div class="card-block">
-            <div class="form-group">
-                <label for="stack-title-input">Body</label>
-                <input 
-                    class="form-control"
-                    type="text"
-                    id="stack-title-input"
-                    [formControl]="commentForm.controls['body']"
-                    placeholder="(required)"
-                />
-            </div>
+        <div class="card-block form-group">
+            <input 
+                class="form-control"
+                type="text"
+                [formControl]="commentForm.controls['body']"
+                placeholder="(required)"
+            />
         </div>
-        <footer class="stack-button">
-            <button type="submit" class="btn btn-warning">+ comment</button>
+        <footer class="d-flex flex-row">
+            <button type="submit" class="btn btn-warning col">+ comment</button>
         </footer>
     </form>
 </div>

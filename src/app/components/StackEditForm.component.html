@@ -1,57 +1,27 @@
-<style>
-    .stack-card .card-header {
-        background-color: 'white'
-    }
-
-    .stack-card .stack-button {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .stack-card .stack-button .btn {
-        border-radius: 0;
-        flex-grow: 1;
-        text-align: center;
-        color: white;
-        font-size: 0.8em;
-    }
-
-    .stack-card .card-text img {
-        width: 18px;
-        height: 18px;
-    }
-
-    .stack-card .stack-note-form {
-        width: 100%;
-        height: 15em;
-    }
-</style>
-<div class="card stack-card" *ngIf="stack">
+<div class="card stack-item stack-item-edit" *ngIf="stack">
     <form [formGroup]="stackForm" (ngSubmit)="submit($event)">
-        <div class="card-header">#{{stackNo}}</div>
+        <div class="card-header">#{{stack.id}}</div>
         <div class="card-block">
             <input 
-                class="form-control"
+                class="form-control col"
                 type="text"
                 [formControl]="stackForm.controls['title']"
                 placeholder="(required)"
             />
-            <div class="card-text text-muted" *ngIf="stack.note != ''">
-                <textarea
-                    class="stack-note-form"
-                    placeholder="(optional)"
-                    [formControl]="stackForm.controls['note']"
-                >{{stack.note}}</textarea>
-            </div>
+            <textarea
+                class="col"
+                placeholder="(optional)"
+                [formControl]="stackForm.controls['note']"
+            >{{stack.note}}</textarea>
             <div class="card-text text-right">
-                <small>
-                by <img src="{{stack.created_by.image}}" /> {{stack.created_by.nickname}}
-            </small>
+                <small class="user-name">
+                    by <img src="{{stack.created_by.image}}" /> {{stack.created_by.nickname}}
+                </small>
             </div>
         </div>
-        <footer class="stack-button">
-            <a href="#" class="btn btn-success" (click)="cancel($event)">Cancel</a>
-            <button type="submit" class="btn btn-primary">Update</button>
+        <footer class="d-flex flex-row">
+            <button class="btn btn-outline-danger col" (click)="cancel($event)">Cancel</button>
+            <button type="submit" class="btn btn-danger col">Update</button>
         </footer>
     </form>
 </div>
