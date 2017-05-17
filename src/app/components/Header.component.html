@@ -1,9 +1,21 @@
-<header class="header">
-  <h1><a href="/">Stacked.</a></h1>
-  <a href="#" (click)="loginClick()" *ngIf="currentUser == null">
-        Login as Slack
-  </a>
-  <a href="#" (click)="logoutClick()" *ngIf="currentUser">
-      Logout (logined as {{currentUser.name}})
-  </a>
+<header class="stacked-header container-fluid">
+  <div class="d-flex flex-row justify-content-between">
+
+    <h1 class="display-1"><a href="/">Stacked.</a></h1>
+
+    <button
+      class="btn btn-primary"
+      (click)="loginClick()"
+      *ngIf="currentUser == null">
+        <i class="fa fa-slack" aria-hidden="true"></i>  Login
+    </button>
+
+    <button
+      class="btn btn-primary"
+      (click)="logoutClick()"
+      *ngIf="currentUser">
+        Logout <i class="fa fa-slack" aria-hidden="true"></i>{{currentUser.nickname}}
+    </button>
+
+  </div>
 </header>

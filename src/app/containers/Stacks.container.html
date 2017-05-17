@@ -1,15 +1,19 @@
-<div class="card-columns">
-    <stack-create-form-component
-        [listId]="listId"
-        (handleSubmit)="addStack($event)"
-    ></stack-create-form-component>
+<div class="row">
+    <div class="col-sm-6 col-lg-4">
+        <stack-create-form-component
+            [listId]="listId"
+            (handleSubmit)="addStack($event)"
+        ></stack-create-form-component>
+    </div>
 
     <template ngFor let-stack [ngForOf]="(stacks$ | async)">
-        <stack-component
-            [stack]="stack"
-            [single]="false"
-            [owned]="(user$ | async)?.id === stack.created_by.id"
-            (handleLike)="addLike($event)"
-        ></stack-component>
+        <div class="col-sm-6 col-lg-4">
+            <stack-component
+                [stack]="stack"
+                [single]="false"
+                [owned]="(user$ | async)?.id === stack.created_by.id"
+                (handleLike)="addLike($event)"
+            ></stack-component>
+        </div>
     </template>
 </div>
