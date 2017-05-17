@@ -50,6 +50,10 @@ export class StackContainer implements OnInit {
         this.store.dispatch(new fromStack.AddLikeAction(this.currentStack.id));
     }
 
+    addCommentLike(commentId: number) {
+        this.store.dispatch(new fromComments.LikeCommentAction(commentId));
+    }
+
     addComment(value: CommentFormValue) {
         this.store.dispatch(new fromComments.AddCommentAction(value));
     }

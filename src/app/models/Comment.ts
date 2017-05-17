@@ -2,6 +2,7 @@ import { User } from './User';
 import { Stack } from './Stack';
 
 export interface Comment {
+    id: number;
     stack: Stack;
     body: string;
     stars_count: number;

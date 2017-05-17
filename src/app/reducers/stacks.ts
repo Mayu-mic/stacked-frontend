@@ -16,7 +16,10 @@ export function reducer(state = initialState, action: fromStacks.Actions | fromS
 
         case fromStack.ADD_LIKE:
             return state.map(stack =>
-                stack.id === action.payload ? { star_count: stack.star_count + 1, ...stack } : stack
+                stack.id === action.payload ? {
+                    ...stack,
+                    star_count: stack.star_count + 1,
+                } : stack
             );
 
         case fromStack.ADD_LIKE_SUCCESS:

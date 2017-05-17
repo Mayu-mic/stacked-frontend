@@ -25,7 +25,11 @@ export class StackedCommentService extends StackedService {
     }
 
     addStar(commentId: number): Observable<Comment> {
-        const url = `comments/${commentId}`;
-        return this.post<Comment>(url, {});
+        const url = `comments/${commentId}/star`;
+        return this.post<Comment>(url, {
+            comment_star: {
+                comment_id: commentId
+            }
+        });
     }
 }
