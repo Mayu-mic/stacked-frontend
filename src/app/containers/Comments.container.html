@@ -1,6 +1,7 @@
 <template ngFor let-comment [ngForOf]="(comments$ | async)">
     <comment-item-component
         [comment]="comment"
+        [owned]="(user$ | async)?.id === comment.created_by.id"
         (handleLike)="addCommentLike($event)"
     ></comment-item-component>
 </template>

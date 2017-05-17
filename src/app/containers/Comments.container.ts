@@ -1,3 +1,4 @@
+import { User } from '../models/User';
 import { CommentFormValue } from '../components/CommentForm.component';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
@@ -12,11 +13,13 @@ export class CommentsContainer implements OnInit {
     @Input() stackId: number;
 
     comments$: Observable<Comment[]>;
+    user$: Observable<User>;
 
     constructor(
         private store: Store<any>
     ) {
         this.comments$ = store.select('comments');
+        this.user$ = store.select('user');
     }
 
     ngOnInit(): void {

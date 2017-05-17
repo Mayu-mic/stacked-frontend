@@ -11,6 +11,11 @@
     </small>
 
     <footer class="stack-button">
-        <a href="#" class="btn btn-primary" (click)="like($event)"><span class="badge badge-pill badge-primary">{{comment.star_count}}</span> Likes</a>
+        <button
+            class="btn btn-primary"
+            [attr.disabled]="owned ? true : null"
+            (click)="like($event)">
+            <span class="badge badge-pill badge-primary">{{comment.star_count}}</span> Likes
+        </button>
     </footer>
 </div>

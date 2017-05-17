@@ -54,7 +54,15 @@
         </div>
     </div>
     <footer class="stack-button">
-        <a href="/stacks/{{stack.id}}" class="btn btn-success"><span class="badge badge-pill badge-success">{{stack.comment_count}}</span> Comments</a>
-        <a href="#" class="btn btn-primary" (click)="like($event)"><span class="badge badge-pill badge-primary">{{stack.star_count}}</span> Likes</a>
+        <a
+            href="/stacks/{{stack.id}}"
+            class="btn btn-success">
+            <span class="badge badge-pill badge-success">{{stack.comment_count}}</span> Comments</a>
+        <button
+            class="btn btn-primary"
+            (click)="like($event)"
+            [attr.disabled]="owned ? true : null">
+            <span class="badge badge-pill badge-primary">{{stack.star_count}}</span> Likes
+        </button>
     </footer>
 </div>
