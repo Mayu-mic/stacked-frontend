@@ -25,7 +25,7 @@
 <div class="card stack-card" *ngIf="stack">
     <div class="card-header">#{{stackNo}}</div>
     <div class="card-block">
-        <h4 class="card-title">{{stack.title}}</h4>
+        <h4 class="card-title"><a href="/stacks/{{stack.id}}">{{stack.title}}</a></h4>
         <p class="card-text text-muted" *ngIf="stack.note != ''">
             {{stack.note}}
             <a href="" class="read-more">more</a>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <footer class="stack-button">
-        <a href="#" class="btn btn-success"><span class="badge badge-pill badge-success">{{stack.comment_count}}</span> Comments</a>
+        <a href="/stacks/{{stack.id}}" class="btn btn-success"><span class="badge badge-pill badge-success">{{stack.comment_count}}</span> Comments</a>
         <a href="#" class="btn btn-primary" (click)="like($event)"><span class="badge badge-pill badge-primary">{{stack.star_count}}</span> Likes</a>
     </footer>
 </div>

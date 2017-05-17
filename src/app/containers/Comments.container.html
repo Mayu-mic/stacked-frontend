@@ -1,0 +1,4 @@
+<h2>Comments</h2>
+<template ngFor let-comment [ngForOf]="(comments$ | async)">
+    <comment-item-component [comment]="comment"></comment-item-component>
+</template>

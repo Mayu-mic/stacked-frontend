@@ -1,3 +1,5 @@
+import { CommentEffects } from './effects/comment';
+import { CommentItemComponent } from './components/CommentItem.component';
 import { StackEffects } from './effects/stack';
 import { StackContainer } from './containers/Stack.container';
 import { MainSectionContainer } from './containers/MainSection.container';
@@ -26,6 +28,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { Angular2TokenService } from 'angular2-token';
 import { OAuthCallbackPage } from './pages/OAuthCallback.page';
+import { CommentsContainer } from './containers/Comments.container';
 
 @NgModule({
   imports: [
@@ -39,6 +42,7 @@ import { OAuthCallbackPage } from './pages/OAuthCallback.page';
     EffectsModule.run(ListsEffects),
     EffectsModule.run(StacksEffects),
     EffectsModule.run(StackEffects),
+    EffectsModule.run(CommentEffects),
     BsDropdownModule.forRoot(),
     StoreDevtoolsModule.instrumentOnlyWithExtension({
       maxAge: 10
@@ -53,12 +57,14 @@ import { OAuthCallbackPage } from './pages/OAuthCallback.page';
 
     MainSectionContainer,
     StackContainer,
+    CommentsContainer,
 
     HeaderComponent,
     ListsComponent,
     FooterComponent,
     StackComponent,
-    StackFormComponent
+    StackFormComponent,
+    CommentItemComponent,
   ],
   providers: [
     Angular2TokenService,

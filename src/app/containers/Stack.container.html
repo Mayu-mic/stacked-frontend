@@ -1,5 +1,5 @@
-<div class="container">
-<section class="main">
-    <stack-component [stack]="(stack$ | async)" [stackNo]="0" (handleLike)="addLike($event)"></stack-component>
-</section>
-</div>
+<stack-component 
+    [stack]="(stack$ | async)"
+    [stackNo]="0"
+    (handleLike)="addLike($event)">
+</stack-component>
