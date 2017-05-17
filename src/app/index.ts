@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {routing, RootComponent} from './routes';
 import {store} from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MarkdownModule } from 'angular2-markdown';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EffectsModule } from '@ngrx/effects';
@@ -44,6 +45,7 @@ import { OAuthCallbackPage } from './pages/OAuthCallback.page';
     EffectsModule.run(StackEffects),
     EffectsModule.run(CommentEffects),
     BsDropdownModule.forRoot(),
+    MarkdownModule.forRoot(),
     StoreDevtoolsModule.instrumentOnlyWithExtension({
       maxAge: 10
     })

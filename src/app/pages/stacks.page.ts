@@ -6,13 +6,4 @@ import { Component, OnInit } from '@angular/core';
     selector: 'stacked-app',
     template: require('./Stacks.page.html')
 })
-export class StacksPage implements OnInit {
-    currentStackId: number;
-
-    constructor(
-        private store: Store<any>,
-        private route: ActivatedRoute
-    ) {}
-
-    ngOnInit(): void { }
-}
+export class StacksPage {}

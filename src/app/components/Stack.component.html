@@ -26,10 +26,16 @@
     <div class="card-header">#{{stackNo}}</div>
     <div class="card-block">
         <h4 class="card-title"><a href="/stacks/{{stack.id}}">{{stack.title}}</a></h4>
-        <p class="card-text text-muted" *ngIf="stack.note != ''">
-            {{stack.note}}
-            <a href="" class="read-more">more</a>
-        </p>
+
+        <div class="card-text text-muted" *ngIf="stack.note != ''">
+            <div *ngIf="!single">
+                {{stack.note | slice:0:50}}
+            </div>
+            <div *ngIf="single">
+                <markdown>{{stack.note}}</markdown>
+            </div>
+        </div>
+
         <div class="card-text text-right">
             <small>
                 by <img src="{{stack.created_by.image}}" /> {{stack.created_by.nickname}}

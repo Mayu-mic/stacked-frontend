@@ -9,6 +9,9 @@ export class StackComponent {
     @Input() stack: Stack;
     @Input() stackNo: number;
     @Output() handleLike: EventEmitter<number> = new EventEmitter(false);
+    @Input() single: boolean;
+
+    openedNote: boolean = false;
 
     like(e: Event) {
         e.preventDefault();
