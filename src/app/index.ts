@@ -1,3 +1,5 @@
+import { StackEditFormComponent } from './components/StackEditForm.component';
+import { RootPage } from './pages/Root.page';
 import { CommentFormComponent } from './components/CommentForm.component';
 import { CommentEffects } from './effects/comment';
 import { CommentItemComponent } from './components/CommentItem.component';
@@ -20,7 +22,7 @@ import { HttpModule } from '@angular/http';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {routing, RootComponent} from './routes';
+import {routing } from './routes';
 import {store} from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MarkdownModule } from 'angular2-markdown';
@@ -51,8 +53,7 @@ import { OAuthCallbackPage } from './pages/OAuthCallback.page';
     })
   ],
   declarations: [
-    RootComponent,
-
+    RootPage,
     IndexPage,
     StacksPage,
     OAuthCallbackPage,
@@ -67,12 +68,13 @@ import { OAuthCallbackPage } from './pages/OAuthCallback.page';
     StackFormComponent,
     CommentItemComponent,
     CommentFormComponent,
+    StackEditFormComponent,
   ],
   providers: [
     Angular2TokenService,
     StackedListService,
   ],
-  bootstrap: [RootComponent]
+  bootstrap: [RootPage]
 })
 export class AppModule {
   constructor(private tokenService: Angular2TokenService) {

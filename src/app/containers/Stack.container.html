@@ -2,8 +2,19 @@
     [stack]="currentStack"
     [stackNo]="0"
     [single]="true"
-    (handleLike)="addLike($event)">
-</stack-component>
+    [owned]="currentUser && (currentUser?.id === currentStack?.created_by.id)"
+    (handleLike)="addLike($event)"
+    (handleEdit)="toggleEditMode()"
+    *ngIf="!stackEditing"
+></stack-component>
+
+<stack-edit-form-component
+    [stack]="currentStack"
+    (handleSubmit)="updateStack($event)"
+    (handleCancel)="toggleEditMode()"
+    *ngIf="stackEditing"
+></stack-edit-form-component>
+
 
 <h2>Comments</h2>
 

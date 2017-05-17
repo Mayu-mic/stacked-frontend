@@ -1,3 +1,4 @@
+import { User } from '../models/User';
 import { StackFormValue } from '../components/StackForm.component';
 import { Stack } from '../models/Stack';
 import { List } from '../models/List';
@@ -21,12 +22,14 @@ export class MainSectionContainer implements OnInit {
 
     lists$: Observable<List[]>;
     stacks$: Observable<Stack[]>;
+    user$: Observable<User>;
 
     constructor(
         private store: Store<any>
     ) {
         this.lists$ = store.select('lists');
         this.stacks$ = store.select('stacks');
+        this.user$ = store.select('user');
     }
 
     ngOnInit(): void {

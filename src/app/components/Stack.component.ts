@@ -8,13 +8,18 @@ import { Stack } from '../models/Stack';
 export class StackComponent {
     @Input() stack: Stack;
     @Input() stackNo: number;
-    @Output() handleLike: EventEmitter<number> = new EventEmitter(false);
     @Input() single: boolean;
-
-    openedNote: boolean = false;
+    @Input() owned: boolean;
+    @Output() handleLike: EventEmitter<number> = new EventEmitter(false);
+    @Output() handleEdit: EventEmitter<any> = new EventEmitter(false);
 
     like(e: Event) {
         e.preventDefault();
         this.handleLike.emit(this.stack.id);
+    }
+
+    edit(e: Event) {
+        e.preventDefault();
+        this.handleEdit.emit();
     }
 }
