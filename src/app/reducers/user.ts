@@ -9,6 +9,9 @@ export function reducer(state = initialState, action: fromUser.Actions): State {
         case fromUser.REQUEST_USER_INFO_SUCCESS:
             return action.payload;
 
+        case fromUser.REQUEST_LOGOUT_SUCCESS:
+            return null;
+
         default:
             return state;
     }

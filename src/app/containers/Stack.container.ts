@@ -4,7 +4,6 @@ import { Stack } from '../models/Stack';
 import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 import * as fromStack from '../actions/stack';
-import * as fromStacks from '../actions/stacks';
 
 interface RouteParams {
     stackId: number;
@@ -29,9 +28,5 @@ export class StackContainer implements OnInit {
             .subscribe((p: RouteParams) => {
                 this.store.dispatch(new fromStack.RequestStackAction(p.stackId));
             });
-    }
-
-    addLike(stackId: number) {
-        this.store.dispatch(new fromStacks.AddLikeAction(stackId));
     }
 }

@@ -67,7 +67,7 @@ import { OAuthCallbackPage } from './pages/OAuthCallback.page';
   bootstrap: [RootComponent]
 })
 export class AppModule {
-  constructor(tokenService: Angular2TokenService) {
+  constructor(private tokenService: Angular2TokenService) {
     tokenService.init({
       apiBase: 'http://localhost:4000',
       oAuthBase: 'http://localhost:4000',

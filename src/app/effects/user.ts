@@ -1,41 +1,42 @@
+import { Action } from '@ngrx/store';
 import { of } from 'rxjs/observable/of';
 import { User } from '../models/User';
 import { Injectable } from '@angular/core';
-import { RequestLoginAction, RequestLogoutAction, RequestUserInfoAction } from '../actions/user';
 import { StackedUserService } from '../services/StackedUserService';
 import { Angular2TokenService } from 'angular2-token';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Rx';
-import * as user from '../actions/user';
+import * as fromUser from '../actions/user';
 
 @Injectable()
 export class UserEffects {
 
     @Effect()
-    login$: Observable<any> = this.action$
-        .ofType(user.REQUEST_LOGIN)
-        .switchMap((action: RequestLoginAction) =>
+    login$: Observable<Action> = this.action$
+        .ofType(fromUser.REQUEST_LOGIN)
+        .switchMap((action: fromUser.RequestLoginAction) =>
             this.userService.login()
-                .map(_ => new user.RequestLoginSuccessAction())
+                .map(_ => new fromUser.RequestLoginSuccessAction())
+                .catch(_ => of(new fromUser.RequestLoginFailAction()))
         );
 
     @Effect()
     logout$: Observable<any> = this.action$
-        .ofType(user.REQUEST_LOGOUT)
-        .switchMap((action: RequestLogoutAction) =>
+        .ofType(fromUser.REQUEST_LOGOUT)
+        .switchMap((action: fromUser.RequestLogoutAction) =>
             this.userService.logout()
-                .map(_ => new user.RequestLogoutSuccessAction())
+                .map(_ => new fromUser.RequestLogoutSuccessAction())
+                .catch(_ => of(new fromUser.RequestLogoutFailAction()))
         );
 
     @Effect()
-    setUserInfo$: Observable<any> = this.action$
-        .ofType(user.REQUEST_USER_INFO)
+    setUserInfo$: Observable<Action> = this.action$
+        .ofType(fromUser.REQUEST_USER_INFO)
         .filter(_ => this.tokenService.userSignedIn())
-        .switchMap((action: RequestUserInfoAction) =>
+        .switchMap((action: fromUser.RequestUserInfoAction) =>
             this.tokenService.validateToken()
-                .map(_ => new user.RequestUserInfoSuccessAction(this.tokenService.currentUserData))
-                // .catch(_ => of(new user.RequestLoginAction()))
-                // .catch(_ => of(new user.RequestUserInfoFailAction()))
+                .map(_ => new fromUser.RequestUserInfoSuccessAction(this.tokenService.currentUserData))
+                .catch(_ => of(new fromUser.RequestUserInfoFailAction()))
         );
 
     private userService: StackedUserService;
