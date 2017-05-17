@@ -1,2 +1,16 @@
-<h2>{{comment.body}}</h2>
-<p>by {{comment.created_by.username}}</p>
+<style>
+    .user_image {
+        width: 18px;
+        height: 18px;
+    }
+</style>
+<div class="card" *ngIf="comment">
+    <h4 class="card-title">{{comment.body}}</h4>
+    <small>
+        by <img src="{{comment.created_by.image}}" class="user_image"/> {{comment.created_by.nickname}}
+    </small>
+
+    <footer class="stack-button">
+        <a href="#" class="btn btn-primary" (click)="like($event)"><span class="badge badge-pill badge-primary">{{comment.star_count}}</span> Likes</a>
+    </footer>
+</div>

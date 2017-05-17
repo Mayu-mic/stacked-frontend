@@ -1,5 +1,5 @@
 import { of } from 'rxjs/observable/of';
-import { RequestCommentsAction } from '../actions/comments';
+import { AddCommentAction, RequestCommentsAction } from '../actions/comments';
 import { Angular2TokenService } from 'angular2-token';
 import { StackedCommentService } from '../services/StackedCommentService';
 import { Action } from '@ngrx/store';
@@ -13,11 +13,20 @@ export class CommentEffects {
 
     @Effect()
     loadComments$: Observable<Action> = this.action$
-        .ofType(fromComments.ADD_COMMENT)
+        .ofType(fromComments.REQUEST_COMMENTS)
         .switchMap((action: RequestCommentsAction) =>
             this.commentService.getComments(action.payload)
                 .map(comments => new fromComments.RequestCommentsSuccessAction(comments))
                 .catch(_ => of(new fromComments.RequestCommentsFailAction()))
+        );
+
+    @Effect()
+    addCommment$: Observable<Action> = this.action$
+        .ofType(fromComments.ADD_COMMENT)
+        .switchMap((action: AddCommentAction) =>
+            this.commentService.postComment(action.payload.stackId, action.payload.body)
+                .map(comment => new fromComments.AddCommentSuccessAction(comment))
+                .catch(_ => of(new fromComments.AddCommentFailAction()))
         );
 
     private commentService: StackedCommentService;

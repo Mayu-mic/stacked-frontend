@@ -9,9 +9,9 @@ export class StackedCommentService extends StackedService {
         return this.get<Comment[]>(url);
     }
 
-    postComment(stackId: number, body: string): Observable<Comment[]> {
+    postComment(stackId: number, body: string): Observable<Comment> {
         const url = `stacks/${stackId}/comments`;
-        return this.post<Comment[]>(url, {
+        return this.post<Comment>(url, {
             comment: {
                 stack_id: stackId,
                 body

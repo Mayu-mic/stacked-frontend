@@ -9,6 +9,9 @@ export function reducer(state = initialState, action: fromComments.Actions) {
         case fromComments.REQUEST_COMMENTS_SUCCESS:
             return action.payload;
 
+        case fromComments.ADD_COMMENT_SUCCESS:
+            return [...state, action.payload];
+
         default:
             return state;
     }

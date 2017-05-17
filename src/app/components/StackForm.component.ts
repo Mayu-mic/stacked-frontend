@@ -27,10 +27,10 @@ export class StackFormComponent {
 
     submit(event: Event) {
         event.preventDefault();
-        if (!this.stackForm.invalid) {
+        if (this.stackForm.valid) {
             const value = {
+                ...this.stackForm.value,
                 listId: 1,
-                ...this.stackForm.value
             };
             this.handleSubmit.emit(value);
             this.stackForm.reset({

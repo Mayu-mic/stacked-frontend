@@ -1,3 +1,4 @@
+import { CommentFormComponent } from './components/CommentForm.component';
 import { CommentEffects } from './effects/comment';
 import { CommentItemComponent } from './components/CommentItem.component';
 import { StackEffects } from './effects/stack';
@@ -28,7 +29,6 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { Angular2TokenService } from 'angular2-token';
 import { OAuthCallbackPage } from './pages/OAuthCallback.page';
-import { CommentsContainer } from './containers/Comments.container';
 
 @NgModule({
   imports: [
@@ -57,7 +57,6 @@ import { CommentsContainer } from './containers/Comments.container';
 
     MainSectionContainer,
     StackContainer,
-    CommentsContainer,
 
     HeaderComponent,
     ListsComponent,
@@ -65,6 +64,7 @@ import { CommentsContainer } from './containers/Comments.container';
     StackComponent,
     StackFormComponent,
     CommentItemComponent,
+    CommentFormComponent,
   ],
   providers: [
     Angular2TokenService,

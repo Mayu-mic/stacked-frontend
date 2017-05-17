@@ -1,5 +1,16 @@
 <stack-component 
-    [stack]="(stack$ | async)"
+    [stack]="currentStack"
     [stackNo]="0"
     (handleLike)="addLike($event)">
 </stack-component>
+
+<h2>Comments</h2>
+
+<template ngFor let-comment [ngForOf]="(comments$ | async)">
+    <comment-item-component [comment]="comment"></comment-item-component>
+</template>
+
+<comment-form-component
+    [stackId]="currentStack?.id"
+    (handleSubmit)="addComment($event)"
+></comment-form-component>

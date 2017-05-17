@@ -1,3 +1,4 @@
+import { CommentFormValue } from '../components/CommentForm.component';
 import { Action } from '@ngrx/store';
 import { Comment } from '../models/Comment';
 
@@ -23,8 +24,25 @@ export class RequestCommentsFailAction implements Action {
     readonly type = REQUEST_COMMENTS_FAIL;
 }
 
+export class AddCommentAction implements Action {
+    readonly type = ADD_COMMENT;
+    constructor(public payload: CommentFormValue) {}
+}
+
+export class AddCommentSuccessAction implements Action {
+    readonly type = ADD_COMMENT_SUCCESS;
+    constructor(public payload: Comment) {}
+}
+
+export class AddCommentFailAction implements Action {
+    readonly type = ADD_COMMENT_FAIL;
+}
+
 export type Actions
     = RequestCommentsAction
     | RequestCommentsSuccessAction
     | RequestCommentsFailAction
+    | AddCommentAction
+    | AddCommentSuccessAction
+    | AddCommentFailAction
     ;
