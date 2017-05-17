@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs/observable/of';
-import { RequestStackAction, UpdateStackAction } from '../actions/stack';
+import { AddLikeAction, RequestStackAction, UpdateStackAction } from '../actions/stack';
 import { Effect, Actions } from '@ngrx/effects';
 import { StackedStackService } from '../services/StackedStackService';
 import { Angular2TokenService } from 'angular2-token';
@@ -27,6 +27,15 @@ export class StackEffects {
             this.stackService.updateStack(action.payload.stackId, action.payload.title, action.payload.note)
                 .map(stack => new fromStack.UpdateStackSuccessAction(stack))
                 .catch(_ => of(new fromStack.UpdateStackFailAction()))
+        );
+
+    @Effect()
+    addLike$: Observable<Action> = this.action$
+        .ofType(fromStack.ADD_LIKE)
+        .switchMap((action: AddLikeAction) =>
+            this.stackService.addLike(action.payload)
+                .map(stack => new fromStack.AddLikeSuccessAction(stack))
+                .catch(_ => of(new fromStack.AddLikeFailAction()))
         );
 
     private stackService: StackedStackService;

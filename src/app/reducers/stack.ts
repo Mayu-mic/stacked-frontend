@@ -9,17 +9,27 @@ export function reducer(state = initialState, action: fromStack.Actions | fromCo
     switch (action.type) {
         case fromStack.REQUEST_STACK_SUCCESS:
         case fromStack.UPDATE_STACK_SUCCESS:
+        case fromStack.ADD_LIKE_SUCCESS:
             return action.payload;
 
         case fromComments.ADD_COMMENT_SUCCESS:
-            return { ...state, comment_count: state.comment_count + 1 };
+            return state ? {
+                ...state,
+                comment_count: state.comment_count + 1
+            } : state;
 
         case fromStack.UPDATE_STACK:
-            return {
+            return state ? {
                 ...state,
                 title: action.payload.title,
                 note: action.payload.note,
-            };
+            } : state;
+ 
+        case fromStack.ADD_LIKE:
+            return state ? {
+                ...state,
+                star_count: state.star_count + 1
+            } : state;
 
         default:
             return state;

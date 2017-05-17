@@ -9,6 +9,7 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Rx';
 import * as fromLists from '../actions/lists';
 import * as fromStacks from '../actions/stacks';
+import * as fromStack from '../actions/stack';
 
 interface RouteParams {
     page: number;
@@ -42,6 +43,6 @@ export class MainSectionContainer implements OnInit {
     }
 
     addLike(stackId: number) {
-        this.store.dispatch(new fromStacks.AddLikeAction(stackId));
+        this.store.dispatch(new fromStack.AddLikeAction(stackId));
     }
 }

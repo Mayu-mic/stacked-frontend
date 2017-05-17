@@ -3,7 +3,7 @@
     [stackNo]="0"
     [single]="true"
     [owned]="currentUser && (currentUser?.id === currentStack?.created_by.id)"
-    (handleLike)="addLike($event)"
+    (handleLike)="addStackLike()"
     (handleEdit)="toggleEditMode()"
     *ngIf="!stackEditing"
 ></stack-component>
