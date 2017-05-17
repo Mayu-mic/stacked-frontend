@@ -7,14 +7,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export abstract class StackedService {
 
-    constructor(protected tokenService: Angular2TokenService) {
-        this.tokenService.init({
-            apiBase: 'http://localhost:4000',
-            oAuthBase: 'http://localhost:4000',
-            oAuthWindowType: 'sameWindow',
-            oAuthCallbackPath: ''
-        });
-    }
+    constructor(protected tokenService: Angular2TokenService) {}
 
     protected get<T>(url: string): Observable<T> {
         return this.tokenService.get(url)
@@ -24,30 +17,21 @@ export abstract class StackedService {
     }
 
     protected post<T>(url: string, body: any): Observable<T> {
-        return this.tokenService.validateToken()
-            .switchMap(_ =>
-                this.tokenService.post(url, body)
-                    .map(res => res.json() as T)
-                    .catch(this.handleError)
-            );
+        return this.tokenService.post(url, body)
+            .map(res => res.json() as T)
+            .catch(this.handleError);
     }
 
     protected patch<T>(url: string, body: any): Observable<T> {
-        return this.tokenService.validateToken()
-            .switchMap(_ =>
-                this.tokenService.patch(url, body)
-                    .map(res => res.json() as T)
-                    .catch(this.handleError)
-            );
+        return this.tokenService.patch(url, body)
+            .map(res => res.json() as T)
+            .catch(this.handleError);
     }
 
     protected delete<T>(url: string): Observable<T> {
-        return this.tokenService.validateToken()
-            .switchMap(_ =>
-                this.tokenService.delete(url)
-                    .map(res => res.json() as T)
-                    .catch(this.handleError)
-            );
+        return this.tokenService.delete(url)
+            .map(res => res.json() as T)
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Observable<any> {

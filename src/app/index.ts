@@ -25,6 +25,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EffectsModule } from '@ngrx/effects';
 
 import { Angular2TokenService } from 'angular2-token';
+import { OAuthCallbackPage } from './pages/OAuthCallback.page';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { Angular2TokenService } from 'angular2-token';
 
     IndexPage,
     StacksPage,
+    OAuthCallbackPage,
 
     MainSectionContainer,
     StackContainer,
@@ -64,4 +66,12 @@ import { Angular2TokenService } from 'angular2-token';
   ],
   bootstrap: [RootComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(tokenService: Angular2TokenService) {
+    tokenService.init({
+      apiBase: 'http://localhost:4000',
+      oAuthBase: 'http://localhost:4000',
+      oAuthWindowType: 'sameWindow',
+    });
+  }
+}

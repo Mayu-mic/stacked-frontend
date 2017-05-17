@@ -30,12 +30,12 @@ export class UserEffects {
     @Effect()
     setUserInfo$: Observable<any> = this.action$
         .ofType(user.REQUEST_USER_INFO)
-        .do(_ => this.tokenService.processOAuthCallback())
-        .filter(_ => !!this.tokenService.currentAuthData)
+        .filter(_ => this.tokenService.userSignedIn())
         .switchMap((action: RequestUserInfoAction) =>
             this.tokenService.validateToken()
                 .map(_ => new user.RequestUserInfoSuccessAction(this.tokenService.currentUserData))
-                .catch(_ => of(new user.RequestUserInfoFailAction()))
+                // .catch(_ => of(new user.RequestLoginAction()))
+                // .catch(_ => of(new user.RequestUserInfoFailAction()))
         );
 
     private userService: StackedUserService;
