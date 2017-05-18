@@ -3,10 +3,11 @@
         <div class="card-text">
             {{comment.body}}
             <button
-                class="btn btn-info btn-sm"
+                class="btn btn-danger btn-sm"
                 [attr.disabled]="owned ? true : null"
                 (click)="like($event)">
-                <span class="badge badge-pill badge-info">{{comment.star_count}}</span> Likes
+                <i class="fa fa-heart"></i>
+                <span class="badge badge-pill badge-danger">{{comment.star_count}}</span>
             </button>
         </div>
         <div class="card-text text-right">

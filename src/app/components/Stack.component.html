@@ -33,12 +33,14 @@
         <a
             href="/stacks/{{stack.id}}"
             class="btn btn-success col">
-            <span class="badge badge-pill badge-success">{{stack.comment_count}}</span> Comments</a>
+            <i class="fa fa-commenting"></i>
+            <span class="badge badge-pill badge-success">{{stack.comment_count}}</span></a>
         <button
-            class="btn btn-primary col"
+            class="btn btn-danger col"
             (click)="like($event)"
             [attr.disabled]="owned ? true : null">
-            <span class="badge badge-pill badge-primary">{{stack.star_count}}</span> Likes
+            <i class="fa fa-heart"></i>
+            <span class="badge badge-pill badge-danger">{{stack.star_count}}</span>
         </button>
     </footer>
 </div>
