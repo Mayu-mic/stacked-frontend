@@ -1,6 +1,9 @@
 <div class="card stack-item" *ngIf="stack">
-    <div class="card-header d-flex flex-row justify-content-between">
-        <div>#{{stack.id}}</div>
+
+    <div
+        class="card-header d-flex flex-row justify-content-between"
+    >
+        <div *ngIf="!single">#{{stackNo}}</div>
         <div>
             <button 
                 class="btn btn-default btn-sm"

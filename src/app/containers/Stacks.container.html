@@ -6,10 +6,15 @@
         ></stack-create-form-component>
     </div>
 
-    <template ngFor let-stack [ngForOf]="(stacks$ | async)">
-        <div class="col-sm-6 col-lg-4">
+    <template ngFor let-stack let-i="index" [ngForOf]="(stacks$ | async)">
+        <div
+            class="col-sm-6"
+            [class.col-lg-8]="i == 0"
+            [class.col-lg-4]="i != 0"
+        >
             <stack-component
                 [stack]="stack"
+                [stackNo]="i+1"
                 [single]="false"
                 [owned]="(user$ | async)?.id === stack.created_by.id"
                 (handleLike)="addLike($event)"
