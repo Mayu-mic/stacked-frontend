@@ -27,6 +27,11 @@ export function reducer(state = initialState, action: fromStacks.Actions | fromS
                 stack.id === action.payload.id ? action.payload : stack
             );
 
+        case fromStack.CHANGE_STATUS_SUCCESS:
+            return state.map(stack =>
+                stack.id === action.payload.id ? action.payload : stack
+            );
+
         default:
             return state;
     }

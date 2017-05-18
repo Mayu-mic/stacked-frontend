@@ -10,6 +10,11 @@
                 (click)="edit($event)"
                 *ngIf="single && owned">edit</button>
         </div>
+        <stack-status-component
+            [status]="stack.status"
+            (handleChange)="statusChange($event)"
+        ></stack-status-component>
+
     </div>
     <div class="card-block">
         <h4 class="card-title"><a href="/stacks/{{stack.id}}">{{stack.title}}</a></h4>

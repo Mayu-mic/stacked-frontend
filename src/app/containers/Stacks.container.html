@@ -18,6 +18,7 @@
                 [single]="false"
                 [owned]="(user$ | async)?.id === stack.created_by.id"
                 (handleLike)="addLike($event)"
+                (handleStatusChange)="handleStatusChange($event, stack.id)"
             ></stack-component>
         </div>
     </template>

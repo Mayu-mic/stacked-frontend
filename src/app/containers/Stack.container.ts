@@ -1,3 +1,4 @@
+import { StackStatus } from '../models/StackStatus';
 import { StackEditFormValue } from '../components/StackEditForm.component';
 import { User } from '../models/User';
 import { CommentFormValue } from '../components/CommentForm.component';
@@ -47,5 +48,10 @@ export class StackContainer implements OnInit {
     updateStack(value: StackEditFormValue) {
         this.store.dispatch(new fromStack.UpdateStackAction(value));
         this.toggleEditMode();
+    }
+
+    changeStackStatus(e: StackStatus) {
+        console.log(e);
+        // this.store.dispatch(new fromStack.ChangeStatusAction(, value));
     }
 }

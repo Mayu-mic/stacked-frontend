@@ -1,3 +1,4 @@
+import { StackStatus } from '../models/StackStatus';
 import { User } from '../models/User';
 import { Stack } from '../models/Stack';
 import { List } from '../models/List';
@@ -42,5 +43,9 @@ export class StacksContainer implements OnInit {
 
     addLike(stackId: number) {
         this.store.dispatch(new fromStack.AddLikeAction(stackId));
+    }
+
+    handleStatusChange(status: StackStatus, stackId: number) {
+        this.store.dispatch(new fromStack.ChangeStatusAction(stackId, status));
     }
 }

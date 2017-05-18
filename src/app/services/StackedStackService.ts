@@ -39,7 +39,7 @@ export class StackedStackService extends StackedService {
     }
 
     changeStackStatus(stackId: number, status: StackStatus): Observable<Stack> {
-        const url = `stacks/${stackId}`;
+        const url = `stacks/${stackId}/status`;
         return this.patch<Stack>(url, {
             stack: {
                 status

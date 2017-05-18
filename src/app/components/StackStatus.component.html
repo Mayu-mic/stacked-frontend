@@ -1,0 +1,41 @@
+<!-- pending -->
+<div ngbDropdown class="btn-group" *ngIf="status == 'pending'">
+    <button class="btn btn-sm btn-success">pending</button>
+    <button type="button" class="btn btn-sm btn-success dropdown-toggle dropdown-toggle-split" ngbDropdownToggle>
+        <span class="caret"></span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <button class="dropdown-item" (click)="changeStatus('in_progress')">marked in progress</button>
+        <button class="dropdown-item" (click)="changeStatus('resolved')">marked to resolved</button>
+        <li class="divider dropdown-divider"></li>
+        <button class="dropdown-item" (click)="delete()">delete stack</button>
+    </div>
+</div>
+
+<!-- in_progress -->
+<div ngbDropdown class="btn-group" *ngIf="status == 'in_progress'">
+    <button class="btn btn-sm btn-primary">in progress</button>
+    <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" ngbDropdownToggle>
+        <span class="caret"></span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <button class="dropdown-item" (click)="changeStatus('resolved')">marked to resolved</button>
+        <li class="divider dropdown-divider"></li>
+        <button class="dropdown-item" (click)="changeStatus('pending')">marked to pending</button>
+        <button class="dropdown-item" (click)="delete()">delete stack</button>
+    </div>
+</div>
+
+<!-- resolved -->
+<div ngbDropdown class="btn-group" *ngIf="status == 'resolved'">
+    <button class="btn btn-sm btn-default">resolved</button>
+    <button type="button" class="btn btn-sm btn-default dropdown-toggle dropdown-toggle-split" ngbDropdownToggle>
+        <span class="caret"></span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <button class="dropdown-item" (click)="changeStatus('in_progress')">marked in progress</button>
+        <button class="dropdown-item" (click)="changeStatus('pending')">marked to pending</button>
+        <li class="divider dropdown-divider"></li>
+        <button class="dropdown-item" (click)="delete()">delete stack</button>
+    </div>
+</div>

@@ -1,3 +1,4 @@
+import { StackStatusComponent } from './components/StackStatus.component';
 import { RequestUserInfoAction } from './actions/user';
 import { Store } from '@ngrx/store';
 import { CommentsContainer } from './containers/Comments.container';
@@ -29,8 +30,8 @@ import {store} from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MarkdownModule } from 'angular2-markdown';
 
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EffectsModule } from '@ngrx/effects';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { Angular2TokenService } from 'angular2-token';
 import { OAuthCallbackPage } from './pages/OAuthCallback.page';
@@ -49,7 +50,7 @@ import { StackCreateFormComponent } from './components/StackCreateForm.component
     EffectsModule.run(StacksEffects),
     EffectsModule.run(StackEffects),
     EffectsModule.run(CommentEffects),
-    BsDropdownModule.forRoot(),
+    NgbModule.forRoot(),
     MarkdownModule.forRoot(),
     StoreDevtoolsModule.instrumentOnlyWithExtension({
       maxAge: 10
@@ -73,6 +74,7 @@ import { StackCreateFormComponent } from './components/StackCreateForm.component
     CommentItemComponent,
     CommentFormComponent,
     StackEditFormComponent,
+    StackStatusComponent
   ],
   providers: [
     Angular2TokenService,

@@ -10,6 +10,7 @@ export function reducer(state = initialState, action: fromStack.Actions | fromCo
         case fromStack.REQUEST_STACK_SUCCESS:
         case fromStack.UPDATE_STACK_SUCCESS:
         case fromStack.ADD_LIKE_SUCCESS:
+        case fromStack.CHANGE_STATUS_SUCCESS:
             return action.payload;
 
         case fromComments.ADD_COMMENT_SUCCESS:
