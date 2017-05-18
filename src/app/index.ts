@@ -1,3 +1,4 @@
+import { RequestUserInfoAction } from './actions/user';
 import { Store } from '@ngrx/store';
 import { CommentsContainer } from './containers/Comments.container';
 import { StacksContainer } from './containers/Stacks.container';
@@ -20,7 +21,7 @@ import { ListsComponent } from './components/Lists.component';
 import { FooterComponent } from './components/Footer.component';
 import { HeaderComponent } from './components/Header.component';
 import { HttpModule } from '@angular/http';
-import { NgModule, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './routes';
@@ -80,11 +81,16 @@ import { StackCreateFormComponent } from './components/StackCreateForm.component
   bootstrap: [RootPage]
 })
 export class AppModule {
-  constructor(private tokenService: Angular2TokenService) {
+  constructor(
+    private tokenService: Angular2TokenService,
+    private store: Store<any>,
+  ) {
     tokenService.init({
       apiBase: 'http://localhost:4000',
       oAuthBase: 'http://localhost:4000',
       oAuthWindowType: 'sameWindow',
     });
+
+    this.store.dispatch(new RequestUserInfoAction());
   }
 }
