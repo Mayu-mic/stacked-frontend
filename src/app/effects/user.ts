@@ -11,32 +11,31 @@ import * as fromUser from '../actions/user';
 @Injectable()
 export class UserEffects {
 
-    @Effect()
-    login$: Observable<Action> = this.action$
+    @Effect({dispatch: false})
+    login$ = this.action$
         .ofType(fromUser.REQUEST_LOGIN)
-        .switchMap((action: fromUser.RequestLoginAction) =>
-            this.userService.login()
-                .map(_ => new fromUser.RequestLoginSuccessAction())
-                .catch(_ => of(new fromUser.RequestLoginFailAction()))
-        );
+        .do(_ => this.userService.login())
+        ;
 
-    @Effect()
+    @Effect({dispatch: false})
     logout$: Observable<any> = this.action$
         .ofType(fromUser.REQUEST_LOGOUT)
-        .switchMap((action: fromUser.RequestLogoutAction) =>
-            this.userService.logout()
-                .map(_ => new fromUser.RequestLogoutSuccessAction())
-                .catch(_ => of(new fromUser.RequestLogoutFailAction()))
-        );
+        .do(_ => this.userService.logout())
+        ;
 
     @Effect()
     setUserInfo$: Observable<Action> = this.action$
         .ofType(fromUser.REQUEST_USER_INFO)
+        .delay(10)
         .filter(_ => this.tokenService.userSignedIn())
-        .switchMap((action: fromUser.RequestUserInfoAction) =>
-            this.tokenService.validateToken()
-                .map(_ => new fromUser.RequestUserInfoSuccessAction(this.tokenService.currentUserData))
-                .catch(_ => of(new fromUser.RequestUserInfoFailAction()))
+        .switchMap(
+            _ => this.tokenService.validateToken()
+                .map(_ => this.tokenService.currentUserData)
+                .map(user => new fromUser.RequestUserInfoSuccessAction(user))
+                .catch(_ => {
+                    this.tokenService.signOut();
+                    return of(new fromUser.RequestUserInfoFailAction());
+                })
         );
 
     private userService: StackedUserService;

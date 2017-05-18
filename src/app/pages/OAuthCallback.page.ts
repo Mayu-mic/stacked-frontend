@@ -15,13 +15,6 @@ export class OAuthCallbackPage implements OnInit {
 
     ngOnInit(): void {
         this.tokenService.processOAuthCallback();
-
-        localStorage.setItem('accessToken', this.tokenService.currentAuthData.accessToken);
-        localStorage.setItem('client', this.tokenService.currentAuthData.client);
-        localStorage.setItem('expiry', this.tokenService.currentAuthData.expiry);
-        localStorage.setItem('tokenType', this.tokenService.currentAuthData.tokenType);
-        localStorage.setItem('uid', this.tokenService.currentAuthData.uid);
-
         this.router.navigateByUrl('/');
     }
 }

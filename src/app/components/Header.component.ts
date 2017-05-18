@@ -11,7 +11,7 @@ import * as fromUser from '../actions/user';
 })
 export class HeaderComponent implements OnInit {
     user$: Observable<User>;
-    currentUser: User = null;
+    currentUser: User;
 
     constructor(private store: Store<any>) {
       this.user$ = store.select('user');

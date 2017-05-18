@@ -1,3 +1,4 @@
+import { Store } from '@ngrx/store';
 import { CommentsContainer } from './containers/Comments.container';
 import { StacksContainer } from './containers/Stacks.container';
 import { RootPage } from './pages/Root.page';
@@ -19,7 +20,7 @@ import { ListsComponent } from './components/Lists.component';
 import { FooterComponent } from './components/Footer.component';
 import { HeaderComponent } from './components/Header.component';
 import { HttpModule } from '@angular/http';
-import {NgModule} from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './routes';
