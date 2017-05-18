@@ -50,8 +50,7 @@ export class StackContainer implements OnInit {
         this.toggleEditMode();
     }
 
-    changeStackStatus(e: StackStatus) {
-        console.log(e);
-        // this.store.dispatch(new fromStack.ChangeStatusAction(, value));
+    changeStackStatus(value: StackStatus, stackId: number) {
+        this.store.dispatch(new fromStack.ChangeStatusAction(stackId, value));
     }
 }

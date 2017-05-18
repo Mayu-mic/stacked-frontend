@@ -1,6 +1,10 @@
 <div class="card stack-item stack-item-edit" *ngIf="stack">
     <form [formGroup]="stackForm" (ngSubmit)="submit($event)">
-        <div class="card-header">#{{stack.id}}</div>
+        <div
+            class="card-header d-flex flex-row justify-content-between"
+        >
+            editing
+        </div>
         <div class="card-block">
             <input 
                 class="form-control col"

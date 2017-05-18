@@ -5,6 +5,7 @@
         <span class="caret"></span>
     </button>
     <div class="dropdown-menu dropdown-menu-right">
+        <button class="dropdown-item" (click)="edit()" *ngIf="canEdit">edit</button>
         <button class="dropdown-item" (click)="changeStatus('in_progress')">marked in progress</button>
         <button class="dropdown-item" (click)="changeStatus('resolved')">marked to resolved</button>
         <li class="divider dropdown-divider"></li>

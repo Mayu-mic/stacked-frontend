@@ -20,8 +20,7 @@ export class StackComponent {
         this.handleLike.emit(this.stack.id);
     }
 
-    edit(e: Event) {
-        e.preventDefault();
+    edit() {
         this.handleEdit.emit();
     }
 

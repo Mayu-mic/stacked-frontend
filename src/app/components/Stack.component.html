@@ -4,16 +4,13 @@
         class="card-header d-flex flex-row justify-content-between"
     >
         <div *ngIf="!single">#{{stackNo}}</div>
-        <div>
-            <button 
-                class="btn btn-default btn-sm"
-                (click)="edit($event)"
-                *ngIf="single && owned">edit</button>
-        </div>
-        <stack-status-component
+        <div *ngIf="single"></div>
+        <stack-menu-component
             [status]="stack.status"
+            [canEdit]="single && owned"
             (handleChange)="statusChange($event)"
-        ></stack-status-component>
+            (handleEdit)="edit()"
+        ></stack-menu-component>
 
     </div>
     <div class="card-block">

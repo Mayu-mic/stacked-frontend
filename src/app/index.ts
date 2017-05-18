@@ -1,4 +1,3 @@
-import { StackStatusComponent } from './components/StackStatus.component';
 import { RequestUserInfoAction } from './actions/user';
 import { Store } from '@ngrx/store';
 import { CommentsContainer } from './containers/Comments.container';
@@ -36,6 +35,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angular2TokenService } from 'angular2-token';
 import { OAuthCallbackPage } from './pages/OAuthCallback.page';
 import { StackCreateFormComponent } from './components/StackCreateForm.component';
+import { StackMenuComponent } from './components/StackMenu.component';
 
 @NgModule({
   imports: [
@@ -74,7 +74,7 @@ import { StackCreateFormComponent } from './components/StackCreateForm.component
     CommentItemComponent,
     CommentFormComponent,
     StackEditFormComponent,
-    StackStatusComponent
+    StackMenuComponent
   ],
   providers: [
     Angular2TokenService,
