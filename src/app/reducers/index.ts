@@ -4,6 +4,7 @@ import * as fromUser from '../reducers/user';
 import * as fromStacks from '../reducers/stacks';
 import * as fromStack from '../reducers/stack';
 import * as fromComments from '../reducers/comments';
+import * as fromFilter from '../reducers/filter';
 
 const reducer = combineReducers(
     {
@@ -12,6 +13,7 @@ const reducer = combineReducers(
         lists: fromLists.reducer,
         user: fromUser.reducer,
         comments: fromComments.reducer,
+        filter: fromFilter.reducer,
     }
 );
 

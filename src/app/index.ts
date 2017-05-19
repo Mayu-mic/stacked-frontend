@@ -1,3 +1,4 @@
+import { StacksFilterComponent } from './components/StacksFilter.component';
 import { RequestUserInfoAction } from './actions/user';
 import { Store } from '@ngrx/store';
 import { CommentsContainer } from './containers/Comments.container';
@@ -74,7 +75,8 @@ import { StackMenuComponent } from './components/StackMenu.component';
     CommentItemComponent,
     CommentFormComponent,
     StackEditFormComponent,
-    StackMenuComponent
+    StackMenuComponent,
+    StacksFilterComponent,
   ],
   providers: [
     Angular2TokenService,

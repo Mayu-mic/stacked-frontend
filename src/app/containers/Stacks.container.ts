@@ -1,3 +1,4 @@
+import { StacksFilter } from '../models/StacksFilter';
 import { StackStatus } from '../models/StackStatus';
 import { User } from '../models/User';
 import { Stack } from '../models/Stack';
@@ -23,6 +24,9 @@ interface RouteParams {
 export class StacksContainer implements OnInit {
     stacks$: Observable<Stack[]>;
     user$: Observable<User>;
+    filter$: Observable<StacksFilter>;
+
+    currentFilter: StacksFilter;
 
     listId = 1; // 決め打ち
 
@@ -31,10 +35,12 @@ export class StacksContainer implements OnInit {
     ) {
         this.stacks$ = store.select('stacks');
         this.user$ = store.select('user');
+        this.filter$ = store.select('filter');
+        this.filter$.subscribe(filter => this.currentFilter = filter);
     }
 
     ngOnInit(): void {
-        this.store.dispatch(new fromStacks.RequestStacksAction(this.listId));
+        this.store.dispatch(new fromStacks.RequestStacksAction(this.listId, this.currentFilter));
     }
 
     addStack(value: StackCreateFormValue) {
@@ -47,5 +53,9 @@ export class StacksContainer implements OnInit {
 
     handleStatusChange(status: StackStatus, stackId: number) {
         this.store.dispatch(new fromStack.ChangeStatusAction(stackId, status));
+    }
+
+    changeFilter(filter: StacksFilter) {
+        this.store.dispatch(new fromStacks.ChangeFilterAction(this.listId, filter));
     }
 }

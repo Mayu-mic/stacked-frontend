@@ -1,0 +1,11 @@
+<ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link" href="#" [class.active]="selected == 'active'" (click)="select('active')">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" [class.active]="selected == 'resolved'" (click)="select('resolved')">Resolved</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" [class.active]="selected == 'all'" (click)="select('all')">All</a>
+    </li>
+</ul>

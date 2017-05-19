@@ -1,3 +1,4 @@
+import { StacksFilter } from '../models/StacksFilter';
 import { Stack } from '../models/Stack';
 import { StackedService } from './StackedService';
 import { Observable } from 'rxjs/Rx';
@@ -7,8 +8,8 @@ import { StackStatus } from '../models/StackStatus';
 @Injectable()
 export class StackedStackService extends StackedService {
 
-    getStacks(listId: number): Observable<Stack[]> {
-        const url = `lists/${listId}/stacks`;
+    getStacks(listId: number, filter?: StacksFilter): Observable<Stack[]> {
+        const url = filter ? `lists/${listId}/stacks?filter=${filter}` : `lists/${listId}/stacks`;
         return this.get<Stack[]>(url);
     }
 

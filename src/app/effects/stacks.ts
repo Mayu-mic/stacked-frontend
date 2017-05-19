@@ -1,4 +1,4 @@
-import { AddStackAction, RequestStacksAction } from '../actions/stacks';
+import { AddStackAction, ChangeFilterAction, ChangeFilterSuccessAction, RequestStacksAction } from '../actions/stacks';
 import { StackedStackService } from '../services/StackedStackService';
 import { Angular2TokenService } from 'angular2-token';
 import { StackedListService } from '../services/StackedListService';
@@ -17,7 +17,7 @@ export class StacksEffects {
     loadStacks$: Observable<Action> = this.action$
         .ofType(fromStacks.REQUEST_STACKS)
         .switchMap((action: RequestStacksAction) =>
-            this.stackService.getStacks(action.payload)
+            this.stackService.getStacks(action.payload, action.filter)
                 .map(stacks => new fromStacks.RequestStacksSuccessAction(stacks))
                 .catch(_ => of(new fromStacks.RequestStacksFailAction()))
         );
@@ -29,6 +29,15 @@ export class StacksEffects {
             this.stackService.addStack(action.payload.listId, action.payload.title, action.payload.note)
                 .map(stack => new fromStacks.AddStackSuccessAction(stack))
                 .catch(_ => of(new fromStacks.AddStackFailAction()))
+        );
+
+    @Effect()
+    changeFilter$: Observable<Action> = this.action$
+        .ofType(fromStacks.CHANGE_FILTER)
+        .switchMap((action: ChangeFilterAction) =>
+            this.stackService.getStacks(action.payload, action.filter)
+                .map(stacks => new ChangeFilterSuccessAction(stacks, action.filter))
+                .catch(_ => of(new fromStacks.ChangeFilterFailAction()))
         );
 
     private stackService: StackedStackService;

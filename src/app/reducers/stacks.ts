@@ -9,6 +9,7 @@ const initialState: State = [];
 export function reducer(state = initialState, action: fromStacks.Actions | fromStack.Actions) {
     switch (action.type) {
         case fromStacks.REQUEST_STACKS_SUCCESS:
+        case fromStacks.CHANGE_FILTER_SUCCESS:
             return action.payload;
 
         case fromStacks.ADD_STACK_SUCCESS:
