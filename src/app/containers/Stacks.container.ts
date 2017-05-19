@@ -27,6 +27,7 @@ export class StacksContainer implements OnInit {
     filter$: Observable<StacksFilter>;
 
     currentFilter: StacksFilter;
+    formExpanded: boolean = false;
 
     listId = 1; // 決め打ち
 
@@ -61,5 +62,9 @@ export class StacksContainer implements OnInit {
 
     changeFilter(filter: StacksFilter) {
         this.store.dispatch(new fromStacks.ChangeFilterAction(this.listId, filter));
+    }
+
+    toggleFormExpand() {
+        this.formExpanded = !this.formExpanded;
     }
 }

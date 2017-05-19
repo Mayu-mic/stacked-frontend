@@ -15,6 +15,8 @@ export interface StackCreateFormValue {
 })
 export class StackCreateFormComponent {
     @Output() handleSubmit: EventEmitter<StackCreateFormValue> = new EventEmitter(false);
+    @Output() handleExpand: EventEmitter<any> = new EventEmitter(false);
+    @Input() expanded: boolean;
     @Input() listId: number;
 
     stackForm: FormGroup;
@@ -39,5 +41,9 @@ export class StackCreateFormComponent {
                 note: ''
             });
         }
+    }
+
+    expand() {
+        this.handleExpand.emit();
     }
 }

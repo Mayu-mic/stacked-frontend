@@ -33,6 +33,12 @@ a {
   }
 }
 
+.create-item-form {
+  textarea.expanded {
+    height: 15em;
+  }
+}
+
 .stack-item-edit {
   textarea {
     height: 15em;
