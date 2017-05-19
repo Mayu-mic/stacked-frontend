@@ -19,8 +19,8 @@ export class StackEditFormComponent implements OnInit {
 
     stackForm: FormGroup;
 
-    constructor(private fb: FormBuilder) {
-    }
+    constructor(private fb: FormBuilder) {}
+
     ngOnInit(): void {
         this.stackForm = this.fb.group({
             title: [this.stack.title, Validators.required],
