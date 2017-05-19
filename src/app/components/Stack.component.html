@@ -7,7 +7,7 @@
         <div *ngIf="single"></div>
         <stack-menu-component
             [status]="stack.status"
-            [canEdit]="single && owned"
+            [canEdit]="single"
             (handleChange)="statusChange($event)"
             (handleDelete)="delete()"
             (handleEdit)="edit()"
