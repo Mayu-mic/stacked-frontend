@@ -47,6 +47,10 @@ export class StacksContainer implements OnInit {
         this.store.dispatch(new fromStacks.AddStackAction(value));
     }
 
+    deleteStack(stackId: number) {
+        this.store.dispatch(new fromStack.DeleteStackAction(stackId));
+    }
+
     addLike(stackId: number) {
         this.store.dispatch(new fromStack.AddLikeAction(stackId));
     }

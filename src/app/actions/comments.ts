@@ -10,6 +10,10 @@ export const ADD_COMMENT = '[Comments] Add Comment';
 export const ADD_COMMENT_SUCCESS = '[Comments] Add Comment Success';
 export const ADD_COMMENT_FAIL = '[Comments] Add Comment Fail';
 
+export const DELETE_COMMENT = '[Comment] Delete Comment';
+export const DELETE_COMMENT_SUCCESS = '[Comment] Delete Comment Success';
+export const DELETE_COMMENT_FAIL = '[Comment] Delete Comment Fail';
+
 export const LIKE_COMMENT = '[Comments] Like Comment';
 export const LIKE_COMMENT_SUCCESS = '[Comments] Like Comment Success';
 export const LIKE_COMMENT_FAIL = '[Comments] Like Comment Fail';
@@ -42,6 +46,20 @@ export class AddCommentFailAction implements Action {
     readonly type = ADD_COMMENT_FAIL;
 }
 
+export class DeleteCommentAction implements Action {
+    readonly type = DELETE_COMMENT;
+    constructor(public payload: number /* comment id */) {}
+}
+
+export class DeleteCommentSuccessAction implements Action {
+    readonly type = DELETE_COMMENT_SUCCESS;
+    constructor(public payload: Comment) {}
+}
+
+export class DeleteCommentFailAction implements Action {
+    readonly type = DELETE_COMMENT_FAIL;
+}
+
 export class LikeCommentAction implements Action {
     readonly type = LIKE_COMMENT;
     constructor(public payload: number /* comment id */) {}
@@ -63,6 +81,9 @@ export type Actions
     | AddCommentAction
     | AddCommentSuccessAction
     | AddCommentFailAction
+    | DeleteCommentAction
+    | DeleteCommentSuccessAction
+    | DeleteCommentFailAction
     | LikeCommentAction
     | LikeCommentSuccessAction
     | LikeCommentFailAction

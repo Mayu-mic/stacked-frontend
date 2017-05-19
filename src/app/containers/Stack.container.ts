@@ -34,6 +34,7 @@ export class StackContainer implements OnInit {
     ngOnInit(): void {
         this.user$.subscribe(user => this.currentUser = user);
         this.stack$.subscribe(stack => this.currentStack = stack);
+        this.stack$.skip(1).subscribe(stack => (stack == null) && (location.href = '/'));
         this.store.dispatch(new fromStack.RequestStackAction(this.stackId));
     }
 
@@ -48,6 +49,10 @@ export class StackContainer implements OnInit {
     updateStack(value: StackEditFormValue) {
         this.store.dispatch(new fromStack.UpdateStackAction(value));
         this.toggleEditMode();
+    }
+
+    deleteStack() {
+        this.store.dispatch(new fromStack.DeleteStackAction(this.currentStack.id));
     }
 
     changeStackStatus(value: StackStatus, stackId: number) {

@@ -9,9 +9,15 @@ export class CommentItemComponent {
     @Input() comment: Comment;
     @Input() owned: boolean;
     @Output() handleLike: EventEmitter<any> = new EventEmitter(false);
+    @Output() handleDelete: EventEmitter<any> = new EventEmitter(false);
 
-    like(e: Event) {
-        e.preventDefault();
-        this.handleLike.emit(this.comment.id);
+    like() {
+        this.handleLike.emit();
+    }
+
+    delete() {
+        if (confirm('delete?')) {
+            this.handleDelete.emit();
+        }
     }
 }

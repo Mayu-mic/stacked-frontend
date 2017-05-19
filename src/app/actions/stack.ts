@@ -11,6 +11,10 @@ export const UPDATE_STACK = '[Stack] Update';
 export const UPDATE_STACK_SUCCESS = '[Stack] Update Success';
 export const UPDATE_STACK_FAIL = '[Stack] Update Fail';
 
+export const DELETE_STACK = '[Stack] Delete';
+export const DELETE_STACK_SUCCESS = '[Stack] Delete Success';
+export const DELETE_STACK_FAIL = '[Stack] Delete Fail';
+
 export const ADD_LIKE = '[Stack] Add Like';
 export const ADD_LIKE_SUCCESS = '[Stack] Add Like Success';
 export const ADD_LIKE_FAIL = '[Stack] Add Like Fail';
@@ -45,6 +49,20 @@ export class UpdateStackSuccessAction implements Action {
 
 export class UpdateStackFailAction implements Action {
     readonly type = UPDATE_STACK_FAIL;
+}
+
+export class DeleteStackAction implements Action {
+    readonly type = DELETE_STACK;
+    constructor(public payload: number /* stack id */) {}
+}
+
+export class DeleteStackSuccessAction implements Action {
+    readonly type = DELETE_STACK_SUCCESS;
+    constructor(public payload: Stack) {}
+}
+
+export class DeleteStackFailAction implements Action {
+    readonly type = DELETE_STACK_FAIL;
 }
 
 export class AddLikeAction implements Action {
@@ -82,6 +100,9 @@ export type Actions
     | UpdateStackAction
     | UpdateStackSuccessAction
     | UpdateStackFailAction
+    | DeleteStackAction
+    | DeleteStackSuccessAction
+    | DeleteStackFailAction
     | AddLikeAction
     | AddLikeSuccessAction
     | AddLikeFailAction

@@ -24,7 +24,8 @@
                 [stackNo]="i+1"
                 [single]="false"
                 [owned]="(user$ | async)?.id === stack.created_by.id"
-                (handleLike)="addLike($event)"
+                (handleLike)="addLike(stack.id)"
+                (handleDelete)="deleteStack(stack.id)"
                 (handleStatusChange)="handleStatusChange($event, stack.id)"
             ></stack-component>
         </div>

@@ -34,4 +34,8 @@ export class CommentsContainer implements OnInit {
         this.store.dispatch(new fromComments.AddCommentAction(value));
     }
 
+    deleteComment(commentId: number) {
+        this.store.dispatch(new fromComments.DeleteCommentAction(commentId));
+    }
+
 }

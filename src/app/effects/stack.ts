@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs/observable/of';
-import { AddLikeAction, ChangeStatusAction, RequestStackAction, UpdateStackAction } from '../actions/stack';
+import {
+    AddLikeAction,
+    ChangeStatusAction,
+    DeleteStackAction,
+    RequestStackAction,
+    UpdateStackAction
+} from '../actions/stack';
 import { Effect, Actions } from '@ngrx/effects';
 import { StackedStackService } from '../services/StackedStackService';
 import { Angular2TokenService } from 'angular2-token';
@@ -27,6 +33,15 @@ export class StackEffects {
             this.stackService.updateStack(action.payload.stackId, action.payload.title, action.payload.note)
                 .map(stack => new fromStack.UpdateStackSuccessAction(stack))
                 .catch(_ => of(new fromStack.UpdateStackFailAction()))
+        );
+
+    @Effect()
+    deleteStack$: Observable<Action> = this.action$
+        .ofType(fromStack.DELETE_STACK)
+        .switchMap((action: DeleteStackAction) =>
+            this.stackService.deleteStack(action.payload)
+                .map(stack => new fromStack.DeleteStackSuccessAction(stack))
+                .catch(_ => of(new fromStack.DeleteStackFailAction()))
         );
 
     @Effect()

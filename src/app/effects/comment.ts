@@ -1,5 +1,5 @@
 import { of } from 'rxjs/observable/of';
-import { AddCommentAction, LikeCommentAction, RequestCommentsAction } from '../actions/comments';
+import { AddCommentAction, DeleteCommentAction, LikeCommentAction, RequestCommentsAction } from '../actions/comments';
 import { Angular2TokenService } from 'angular2-token';
 import { StackedCommentService } from '../services/StackedCommentService';
 import { Action } from '@ngrx/store';
@@ -27,6 +27,15 @@ export class CommentEffects {
             this.commentService.postComment(action.payload.stackId, action.payload.body)
                 .map(comment => new fromComments.AddCommentSuccessAction(comment))
                 .catch(_ => of(new fromComments.AddCommentFailAction()))
+        );
+
+    @Effect()
+    deleteComment$: Observable<Action> = this.action$
+        .ofType(fromComments.DELETE_COMMENT)
+        .switchMap((action: DeleteCommentAction) =>
+            this.commentService.deleteComment(action.payload)
+                .map(comment => new fromComments.DeleteCommentSuccessAction(comment))
+                .catch(_ => of(new fromComments.DeleteCommentFailAction()))
         );
 
     @Effect()

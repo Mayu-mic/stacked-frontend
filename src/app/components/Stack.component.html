@@ -9,6 +9,7 @@
             [status]="stack.status"
             [canEdit]="single && owned"
             (handleChange)="statusChange($event)"
+            (handleDelete)="delete()"
             (handleEdit)="edit()"
         ></stack-menu-component>
 
@@ -37,7 +38,7 @@
             <span class="badge badge-pill badge-success">{{stack.comment_count}}</span></a>
         <button
             class="btn btn-danger col"
-            (click)="like($event)"
+            (click)="like()"
             [attr.disabled]="owned ? true : null">
             <i class="fa fa-heart"></i>
             <span class="badge badge-pill badge-danger">{{stack.star_count}}</span>

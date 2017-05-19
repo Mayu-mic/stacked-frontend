@@ -2,7 +2,8 @@
     <comment-item-component
         [comment]="comment"
         [owned]="(user$ | async)?.id === comment.created_by.id"
-        (handleLike)="addCommentLike($event)"
+        (handleLike)="addCommentLike(comment.id)"
+        (handleDelete)="deleteComment(comment.id)"
     ></comment-item-component>
 </template>
 

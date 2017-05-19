@@ -4,6 +4,7 @@
     [owned]="currentUser && (currentUser?.id === currentStack?.created_by.id)"
     (handleLike)="addStackLike()"
     (handleEdit)="toggleEditMode()"
+    (handleDelete)="deleteStack()"
     (handleStatusChange)="changeStackStatus($event, currentStack.id)"
     *ngIf="!stackEditing"
 ></stack-component>

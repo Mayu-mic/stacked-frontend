@@ -11,17 +11,21 @@ export class StackComponent {
     @Input() stackNo: number;
     @Input() single: boolean;
     @Input() owned: boolean;
-    @Output() handleLike: EventEmitter<number> = new EventEmitter(false);
+    @Output() handleLike: EventEmitter<any> = new EventEmitter(false);
     @Output() handleEdit: EventEmitter<any> = new EventEmitter(false);
+    @Output() handleDelete: EventEmitter<any> = new EventEmitter(false);
     @Output() handleStatusChange: EventEmitter<StackStatus> = new EventEmitter(false);
 
-    like(e: Event) {
-        e.preventDefault();
-        this.handleLike.emit(this.stack.id);
+    like() {
+        this.handleLike.emit();
     }
 
     edit() {
         this.handleEdit.emit();
+    }
+
+    delete() {
+        this.handleDelete.emit();
     }
 
     statusChange(value: StackStatus) {

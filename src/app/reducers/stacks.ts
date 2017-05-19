@@ -33,6 +33,9 @@ export function reducer(state = initialState, action: fromStacks.Actions | fromS
                 stack.id === action.payload.id ? action.payload : stack
             );
 
+        case fromStack.DELETE_STACK_SUCCESS:
+            return state.filter(stack => stack.id !== action.payload.id);
+
         default:
             return state;
     }

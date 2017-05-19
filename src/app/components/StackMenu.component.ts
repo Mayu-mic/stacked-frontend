@@ -18,11 +18,13 @@ export class StackMenuComponent {
         }
     }
 
-    delete() {
-        this.handleDelete.emit();
-    }
-
     edit() {
         this.handleEdit.emit();
+    }
+
+    delete() {
+        if (confirm('delete?')) {
+            this.handleDelete.emit();
+        }
     }
 }
