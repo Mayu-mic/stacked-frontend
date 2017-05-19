@@ -1,4 +1,4 @@
-<template ngFor let-comment [ngForOf]="(comments$ | async)">
+<ng-template ngFor let-comment [ngForOf]="(comments$ | async)">
     <comment-item-component
         [comment]="comment"
         [canLike]="currentUser && currentUser.id != comment.created_by.id"
@@ -6,7 +6,7 @@
         (handleLike)="addCommentLike(comment.id)"
         (handleDelete)="deleteComment(comment.id)"
     ></comment-item-component>
-</template>
+</ng-template>
 
 <comment-form-component
     [stackId]="stackId"

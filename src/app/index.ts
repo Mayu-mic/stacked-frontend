@@ -18,7 +18,6 @@ import { UserEffects } from './effects/user';
 import { RouterModule } from '@angular/router';
 import { StackedListService } from './services/StackedListService';
 import { ListsEffects } from './effects/lists';
-import { ListsComponent } from './components/Lists.component';
 import { FooterComponent } from './components/Footer.component';
 import { HeaderComponent } from './components/Header.component';
 import { HttpModule } from '@angular/http';
@@ -68,7 +67,6 @@ import { StackMenuComponent } from './components/StackMenu.component';
     CommentsContainer,
 
     HeaderComponent,
-    ListsComponent,
     FooterComponent,
     StackComponent,
     StackCreateFormComponent,

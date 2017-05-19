@@ -6,7 +6,6 @@
 </div>
 
 <div class="row">
-
     <div 
         class="col-sm-6 col-lg-4"
         [class.col-sm-12]="formExpanded"
@@ -21,7 +20,7 @@
         ></stack-create-form-component>
     </div>
 
-    <template ngFor let-stack let-i="index" [ngForOf]="(stacks$ | async)">
+    <ng-template ngFor let-stack let-i="index" [ngForOf]="(stacks$ | async)">
         <div
             class="col-sm-6"
             [class.col-lg-8]="!formExpanded && (i == 0)"
@@ -40,5 +39,5 @@
                 (handleStatusChange)="handleStatusChange($event, stack.id)"
             ></stack-component>
         </div>
-    </template>
+    </ng-template>
 </div>
