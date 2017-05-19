@@ -32,6 +32,12 @@ export function reducer(state = initialState, action: fromStack.Actions | fromCo
                 star_count: state.star_count + 1
             } : state;
 
+        case fromStack.ADD_LIKE_FAIL:
+            return state ? {
+                ...state,
+                star_count: state.star_count - 1
+            } : state;
+
         case fromStack.DELETE_STACK_SUCCESS:
             return null;
 

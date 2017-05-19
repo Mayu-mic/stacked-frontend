@@ -50,7 +50,7 @@ export class StackEffects {
         .switchMap((action: AddLikeAction) =>
             this.stackService.addLike(action.payload)
                 .map(stack => new fromStack.AddLikeSuccessAction(stack))
-                .catch(_ => of(new fromStack.AddLikeFailAction()))
+                .catch(_ => of(new fromStack.AddLikeFailAction(action.payload)))
         );
 
     @Effect()

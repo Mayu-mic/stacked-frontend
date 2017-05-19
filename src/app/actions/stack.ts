@@ -77,6 +77,7 @@ export class AddLikeSuccessAction implements Action {
 
 export class AddLikeFailAction implements Action {
     readonly type = ADD_LIKE_FAIL;
+    constructor(public payload: number /* stack id */) {}
 }
 
 export class ChangeStatusAction implements Action {
