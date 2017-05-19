@@ -5,7 +5,7 @@
                 {{comment.body}}
                 <button
                     class="btn btn-danger btn-sm"
-                    [attr.disabled]="owned ? true : null"
+                    [disabled]="!canLike"
                     (click)="like()">
                     <i class="fa fa-heart"></i>
                     <span class="badge badge-pill badge-danger">{{comment.star_count}}</span>
@@ -13,7 +13,9 @@
             </div>
             <button 
                 class="btn btn-outline-danger btn-sm"
-                (click)="delete()"><i class="fa fa-times"></i></button>
+                (click)="delete()"
+                [disabled]="!canDelete"
+                ><i class="fa fa-times"></i></button>
         </div>
         <div class="card-text text-right">
             <small class="user-name">

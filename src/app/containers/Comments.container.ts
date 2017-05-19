@@ -15,11 +15,14 @@ export class CommentsContainer implements OnInit {
     comments$: Observable<Comment[]>;
     user$: Observable<User>;
 
+    currentUser: User = null;
+
     constructor(
         private store: Store<any>
     ) {
         this.comments$ = store.select('comments');
         this.user$ = store.select('user');
+        this.user$.subscribe(user => this.currentUser = user);
     }
 
     ngOnInit(): void {

@@ -15,6 +15,7 @@
         <stack-create-form-component
             [listId]="listId"
             [expanded]="formExpanded"
+            [canCreate]="currentUser"
             (handleSubmit)="addStack($event)"
             (handleExpand)="toggleFormExpand()"
         ></stack-create-form-component>
@@ -30,7 +31,10 @@
                 [stack]="stack"
                 [stackNo]="i+1"
                 [single]="false"
-                [owned]="(user$ | async)?.id === stack.created_by.id"
+                [canEdit]="false"
+                [canLike]="currentUser && currentUser.id !== stack.created_by.id"
+                [canDelete]="currentUser"
+                [canChangeStatus]="currentUser"
                 (handleLike)="addLike(stack.id)"
                 (handleDelete)="deleteStack(stack.id)"
                 (handleStatusChange)="handleStatusChange($event, stack.id)"

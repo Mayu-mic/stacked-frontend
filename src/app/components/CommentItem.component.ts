@@ -7,7 +7,8 @@ import { Comment } from '../models/comment';
 })
 export class CommentItemComponent {
     @Input() comment: Comment;
-    @Input() owned: boolean;
+    @Input() canLike: boolean;
+    @Input() canDelete: boolean;
     @Output() handleLike: EventEmitter<any> = new EventEmitter(false);
     @Output() handleDelete: EventEmitter<any> = new EventEmitter(false);
 

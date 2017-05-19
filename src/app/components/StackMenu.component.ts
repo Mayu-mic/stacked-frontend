@@ -7,7 +7,9 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 })
 export class StackMenuComponent {
     @Input() status: StackStatus;
-    @Input() canEdit: boolean;
+    @Input() canEdit: boolean = true;
+    @Input() canChangeStatus: boolean = true;
+    @Input() canDelete: boolean = true;
     @Output() handleChange: EventEmitter<StackStatus> = new EventEmitter(false);
     @Output() handleDelete: EventEmitter<any> = new EventEmitter(false);
     @Output() handleEdit: EventEmitter<any> = new EventEmitter(false);

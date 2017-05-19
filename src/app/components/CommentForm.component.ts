@@ -13,6 +13,7 @@ export interface CommentFormValue {
 export class CommentFormComponent {
     @Output() handleSubmit: EventEmitter<CommentFormValue> = new EventEmitter(false);
     @Input() stackId: number;
+    @Input() canCreate: boolean;
 
     commentForm: FormGroup;
 
@@ -34,5 +35,9 @@ export class CommentFormComponent {
                 body: ''
             });
         }
+    }
+
+    canSubmit(): boolean {
+        return this.canCreate && this.commentForm.value.body.length > 0;
     }
 }

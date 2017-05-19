@@ -12,7 +12,7 @@
             />
         </div>
         <footer class="d-flex flex-row">
-            <button type="submit" class="btn btn-warning col">+ comment</button>
+            <button type="submit" class="btn btn-warning col" [disabled]="!canSubmit()">+ comment</button>
         </footer>
     </form>
 </div>

@@ -2,12 +2,18 @@
 <div ngbDropdown class="btn-group" *ngIf="status == 'pending'">
     <button class="btn btn-sm btn-success dropdown-toggle" ngbDropdownToggle>pending</button>
     <div class="dropdown-menu dropdown-menu-right">
-        <button class="dropdown-item" (click)="edit()" *ngIf="canEdit">edit</button>
-        <li class="divider dropdown-divider" *ngIf="canEdit"></li>
-        <button class="dropdown-item" (click)="changeStatus('in_progress')">switch to in-progress</button>
-        <button class="dropdown-item" (click)="changeStatus('resolved')">switch to resolved</button>
-        <li class="divider dropdown-divider"></li>
-        <button class="dropdown-item text-danger" (click)="delete()">delete stack</button>
+        <div *ngIf="canEdit">
+            <button class="dropdown-item" (click)="edit()">edit</button>
+            <li class="divider dropdown-divider"></li>
+        </div>
+        <div *ngIf="canChangeStatus">
+            <button class="dropdown-item" (click)="changeStatus('in_progress')">switch to in-progress</button>
+            <button class="dropdown-item" (click)="changeStatus('resolved')">switch to resolved</button>
+            <li class="divider dropdown-divider"></li>
+        </div>
+        <div *ngIf="canDelete">
+            <button class="dropdown-item text-danger" (click)="delete()">delete stack</button>
+        </div>
     </div>
 </div>
 
@@ -15,12 +21,18 @@
 <div ngbDropdown class="btn-group" *ngIf="status == 'in_progress'">
     <button class="btn btn-sm btn-primary dropdown-toggle" ngbDropdownToggle>in progress</button>
     <div class="dropdown-menu dropdown-menu-right">
-        <button class="dropdown-item" (click)="edit()" *ngIf="canEdit">edit</button>
-        <li class="divider dropdown-divider" *ngIf="canEdit"></li>
-        <button class="dropdown-item" (click)="changeStatus('resolved')">switch to resolved</button>
-        <li class="divider dropdown-divider"></li>
-        <button class="dropdown-item" (click)="changeStatus('pending')">switch to pending</button>
-        <button class="dropdown-item text-danger" (click)="delete()">delete stack</button>
+        <div *ngIf="canEdit">
+            <button class="dropdown-item" (click)="edit()">edit</button>
+            <li class="divider dropdown-divider"></li>
+        </div>
+        <div *ngIf="canChangeStatus">
+            <button class="dropdown-item" (click)="changeStatus('resolved')">switch to resolved</button>
+            <li class="divider dropdown-divider"></li>
+            <button class="dropdown-item" (click)="changeStatus('pending')">switch to pending</button>
+        </div>
+        <div *ngIf="canDelete">
+            <button class="dropdown-item text-danger" (click)="delete()">delete stack</button>
+        </div>
     </div>
 </div>
 
@@ -28,11 +40,17 @@
 <div ngbDropdown class="btn-group" *ngIf="status == 'resolved'">
     <button class="btn btn-sm btn-default dropdown-toggle" ngbDropdownToggle>resolved</button>
     <div class="dropdown-menu dropdown-menu-right">
-        <button class="dropdown-item" (click)="edit()" *ngIf="canEdit">edit</button>
-        <li class="divider dropdown-divider" *ngIf="canEdit"></li>
-        <button class="dropdown-item" (click)="changeStatus('in_progress')">switch to in-progress</button>
-        <button class="dropdown-item" (click)="changeStatus('pending')">switch to pending</button>
-        <li class="divider dropdown-divider"></li>
-        <button class="dropdown-item text-danger" (click)="delete()">delete stack</button>
+        <div *ngIf="canEdit">
+            <button class="dropdown-item" (click)="edit()">edit</button>
+            <li class="divider dropdown-divider"></li>
+        </div>
+        <div *ngIf="canChangeStatus">
+            <button class="dropdown-item" (click)="changeStatus('in_progress')">switch to in-progress</button>
+            <button class="dropdown-item" (click)="changeStatus('pending')">switch to pending</button>
+            <li class="divider dropdown-divider"></li>
+        </div>
+        <div *ngIf="canDelete">
+            <button class="dropdown-item text-danger" (click)="delete()">delete stack</button>
+        </div>
     </div>
 </div>

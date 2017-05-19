@@ -26,6 +26,7 @@ export class StacksContainer implements OnInit {
     user$: Observable<User>;
     filter$: Observable<StacksFilter>;
 
+    currentUser: User;
     currentFilter: StacksFilter;
     formExpanded: boolean = false;
 
@@ -38,6 +39,7 @@ export class StacksContainer implements OnInit {
         this.user$ = store.select('user');
         this.filter$ = store.select('filter');
         this.filter$.subscribe(filter => this.currentFilter = filter);
+        this.user$.subscribe(user => this.currentUser = user);
     }
 
     ngOnInit(): void {

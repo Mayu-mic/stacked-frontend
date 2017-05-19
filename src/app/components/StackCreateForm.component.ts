@@ -18,6 +18,7 @@ export class StackCreateFormComponent {
     @Output() handleExpand: EventEmitter<any> = new EventEmitter(false);
     @Input() expanded: boolean;
     @Input() listId: number;
+    @Input() canCreate: boolean = true;
 
     stackForm: FormGroup;
 
@@ -45,5 +46,9 @@ export class StackCreateFormComponent {
 
     expand() {
         this.handleExpand.emit();
+    }
+
+    canSubmit(): boolean {
+        return this.canCreate && this.stackForm.value.title.length > 0;
     }
 }

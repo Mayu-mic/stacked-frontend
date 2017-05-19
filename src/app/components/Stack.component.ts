@@ -10,7 +10,10 @@ export class StackComponent {
     @Input() stack: Stack;
     @Input() stackNo: number;
     @Input() single: boolean;
-    @Input() owned: boolean;
+    @Input() canLike: boolean;
+    @Input() canEdit: boolean;
+    @Input() canDelete: boolean;
+    @Input() canChangeStatus: boolean;
     @Output() handleLike: EventEmitter<any> = new EventEmitter(false);
     @Output() handleEdit: EventEmitter<any> = new EventEmitter(false);
     @Output() handleDelete: EventEmitter<any> = new EventEmitter(false);
