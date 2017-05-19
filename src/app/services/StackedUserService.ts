@@ -4,13 +4,16 @@ import { Observable } from 'rxjs/Rx';
 import { StackedService } from './StackedService';
 
 export class StackedUserService extends StackedService {
-    login(): void {
+
+    login(redirectTo: string): void {
+        localStorage.setItem('redirectTo', redirectTo);
         this.tokenService.signInOAuth('slack');
     }
 
     logout(): void {
         this.tokenService.signOut()
             .subscribe(_ => {
+                localStorage.removeItem('redirectTo');
                 location.href = '/';
             })
         ;

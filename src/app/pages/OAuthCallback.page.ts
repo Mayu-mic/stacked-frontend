@@ -15,6 +15,7 @@ export class OAuthCallbackPage implements OnInit {
 
     ngOnInit(): void {
         this.tokenService.processOAuthCallback();
-        this.router.navigateByUrl('/');
+        const redirectTo = localStorage.getItem('redirectTo') || '/';
+        this.router.navigateByUrl(redirectTo);
     }
 }

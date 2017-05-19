@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Action } from '@ngrx/store';
 import { of } from 'rxjs/observable/of';
 import { User } from '../models/User';
@@ -14,7 +15,7 @@ export class UserEffects {
     @Effect({dispatch: false})
     login$ = this.action$
         .ofType(fromUser.REQUEST_LOGIN)
-        .do(_ => this.userService.login())
+        .do(_ => this.userService.login(this.router.url))
         ;
 
     @Effect({dispatch: false})
@@ -40,7 +41,7 @@ export class UserEffects {
 
     private userService: StackedUserService;
 
-    constructor(private action$: Actions, private tokenService: Angular2TokenService) {
+    constructor(private action$: Actions, private tokenService: Angular2TokenService, private router: Router) {
         this.userService = new StackedUserService(tokenService);
     }
 }
