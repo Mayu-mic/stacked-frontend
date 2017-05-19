@@ -1,7 +1,7 @@
 <stack-component 
     [stack]="currentStack"
     [single]="true"
-    [canEdit]="true"
+    [canEdit]="currentUser"
     [canLike]="currentUser && currentUser.id !== currentStack.created_by.id"
     [canDelete]="currentUser"
     [canChangeStatus]="currentUser"
