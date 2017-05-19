@@ -43,4 +43,8 @@ export class StackEditFormComponent implements OnInit {
             this.handleSubmit.emit(value);
         }
     }
+
+    canSubmit(): boolean {
+        return this.stackForm.value.title.length > 0;
+    }
 }

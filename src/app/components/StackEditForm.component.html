@@ -25,7 +25,7 @@
         </div>
         <footer class="d-flex flex-row">
             <button class="btn btn-outline-danger col" (click)="cancel($event)">Cancel</button>
-            <button type="submit" class="btn btn-danger col">Update</button>
+            <button type="submit" class="btn btn-danger col" [disabled]="!canSubmit()">Update</button>
         </footer>
     </form>
 </div>
