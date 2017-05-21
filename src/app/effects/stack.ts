@@ -4,6 +4,7 @@ import {
     AddLikeAction,
     ChangeStatusAction,
     DeleteStackAction,
+    RemoveLikeAction,
     RequestStackAction,
     UpdateStackAction
 } from '../actions/stack';
@@ -51,6 +52,15 @@ export class StackEffects {
             this.stackService.addLike(action.payload)
                 .map(stack => new fromStack.AddLikeSuccessAction(stack))
                 .catch(_ => of(new fromStack.AddLikeFailAction(action.payload)))
+        );
+
+    @Effect()
+    removeLike$: Observable<Action> = this.action$
+        .ofType(fromStack.REMOVE_LIKE)
+        .switchMap((action: RemoveLikeAction) =>
+            this.stackService.removeLike(action.payload)
+                .map(stack => new fromStack.RemoveLikeSuccessAction(stack))
+                .catch(_ => of(new fromStack.RemoveLikeFailAction(action.payload)))
         );
 
     @Effect()

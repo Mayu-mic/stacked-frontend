@@ -15,7 +15,18 @@ export function reducer(state = initialState, action: fromStacks.Actions | fromS
         case fromStacks.ADD_STACK_SUCCESS:
             return [ action.payload, ...state ];
 
+        case fromStack.DELETE_STACK_SUCCESS:
+            return state.filter(stack => stack.id !== action.payload.id);
+
+        case fromStack.ADD_LIKE_SUCCESS:
+        case fromStack.REMOVE_LIKE_SUCCESS:
+        case fromStack.CHANGE_STATUS_SUCCESS:
+            return state.map(stack =>
+                stack.id === action.payload.id ? action.payload : stack
+            );
+
         case fromStack.ADD_LIKE:
+        case fromStack.REMOVE_LIKE_FAIL:
             return state.map(stack =>
                 stack.id === action.payload ? {
                     ...stack,
@@ -23,11 +34,7 @@ export function reducer(state = initialState, action: fromStacks.Actions | fromS
                 } : stack
             );
 
-        case fromStack.ADD_LIKE_SUCCESS:
-            return state.map(stack =>
-                stack.id === action.payload.id ? action.payload : stack
-            );
-
+        case fromStack.REMOVE_LIKE:
         case fromStack.ADD_LIKE_FAIL:
             return state.map(stack =>
                 stack.id === action.payload ? {
@@ -35,14 +42,6 @@ export function reducer(state = initialState, action: fromStacks.Actions | fromS
                     star_count: stack.star_count - 1,
                 } : stack
             );
-
-        case fromStack.CHANGE_STATUS_SUCCESS:
-            return state.map(stack =>
-                stack.id === action.payload.id ? action.payload : stack
-            );
-
-        case fromStack.DELETE_STACK_SUCCESS:
-            return state.filter(stack => stack.id !== action.payload.id);
 
         default:
             return state;

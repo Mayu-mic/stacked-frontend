@@ -6,8 +6,9 @@
                 <button
                     class="btn btn-danger btn-sm"
                     [disabled]="!canLike"
-                    (click)="like()">
-                    <i class="fa fa-heart"></i>
+                    (click)="toggleLike()">
+                    <i class="fa fa-heart" *ngIf="comment.liked"></i>
+                    <i class="fa fa-heart-o" *ngIf="!comment.liked"></i>
                     <span class="badge badge-pill badge-danger">{{comment.star_count}}</span>
                 </button>
             </div>

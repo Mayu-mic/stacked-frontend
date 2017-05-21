@@ -42,6 +42,10 @@ export class StackContainer implements OnInit {
         this.store.dispatch(new fromStack.AddLikeAction(this.currentStack.id));
     }
 
+    removeStackLike() {
+        this.store.dispatch(new fromStack.RemoveLikeAction(this.currentStack.id));
+    }
+
     toggleEditMode() {
         this.stackEditing = !this.stackEditing;
     }

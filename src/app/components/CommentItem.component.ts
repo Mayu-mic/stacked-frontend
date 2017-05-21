@@ -9,11 +9,11 @@ export class CommentItemComponent {
     @Input() comment: Comment;
     @Input() canLike: boolean;
     @Input() canDelete: boolean;
-    @Output() handleLike: EventEmitter<any> = new EventEmitter(false);
+    @Output() handleToggleLike: EventEmitter<any> = new EventEmitter(false);
     @Output() handleDelete: EventEmitter<any> = new EventEmitter(false);
 
-    like() {
-        this.handleLike.emit();
+    toggleLike() {
+        this.handleToggleLike.emit();
     }
 
     delete() {

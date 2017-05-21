@@ -10,6 +10,7 @@ export function reducer(state = initialState, action: fromStack.Actions | fromCo
         case fromStack.REQUEST_STACK_SUCCESS:
         case fromStack.UPDATE_STACK_SUCCESS:
         case fromStack.ADD_LIKE_SUCCESS:
+        case fromStack.REMOVE_LIKE_SUCCESS:
         case fromStack.CHANGE_STATUS_SUCCESS:
             return action.payload;
 
@@ -27,11 +28,13 @@ export function reducer(state = initialState, action: fromStack.Actions | fromCo
             } : state;
 
         case fromStack.ADD_LIKE:
+        case fromStack.REMOVE_LIKE_FAIL:
             return state ? {
                 ...state,
                 star_count: state.star_count + 1
             } : state;
 
+        case fromStack.REMOVE_LIKE:
         case fromStack.ADD_LIKE_FAIL:
             return state ? {
                 ...state,

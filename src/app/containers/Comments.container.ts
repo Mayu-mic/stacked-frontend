@@ -33,6 +33,10 @@ export class CommentsContainer implements OnInit {
         this.store.dispatch(new fromComments.LikeCommentAction(commentId));
     }
 
+    removeCommentLike(commentId: number) {
+        this.store.dispatch(new fromComments.UnlikeCommentAction(commentId));
+    }
+
     addComment(value: CommentFormValue) {
         this.store.dispatch(new fromComments.AddCommentAction(value));
     }

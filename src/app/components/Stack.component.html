@@ -41,7 +41,7 @@
             <span class="badge badge-pill badge-success">{{stack.comment_count}}</span></a>
         <button
             class="btn btn-danger col"
-            (click)="like()"
+            (click)="toggleLike()"
             [disabled]="!canLike">
             <i class="fa fa-heart" *ngIf="stack.liked"></i>
             <i class="fa fa-heart-o" *ngIf="!stack.liked"></i>

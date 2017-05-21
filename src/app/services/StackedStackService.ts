@@ -61,4 +61,9 @@ export class StackedStackService extends StackedService {
             }
         });
     }
+
+    removeLike(stackId: number): Observable<Stack> {
+        const url = `stacks/${stackId}/star`;
+        return this.delete<Stack>(url);
+    }
 }

@@ -34,7 +34,7 @@
                 [canLike]="currentUser && currentUser.id !== stack.created_by.id"
                 [canDelete]="currentUser"
                 [canChangeStatus]="currentUser"
-                (handleLike)="addLike(stack.id)"
+                (handleToggleLike)="stack.liked ? removeLike(stack.id) : addLike(stack.id)"
                 (handleDelete)="deleteStack(stack.id)"
                 (handleStatusChange)="handleStatusChange($event, stack.id)"
             ></stack-component>

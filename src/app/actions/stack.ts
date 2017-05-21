@@ -19,6 +19,10 @@ export const ADD_LIKE = '[Stack] Add Like';
 export const ADD_LIKE_SUCCESS = '[Stack] Add Like Success';
 export const ADD_LIKE_FAIL = '[Stack] Add Like Fail';
 
+export const REMOVE_LIKE = '[Stack] Remove Like';
+export const REMOVE_LIKE_SUCCESS = '[Stack] Remove Like Success';
+export const REMOVE_LIKE_FAIL = '[Stack] Remove Like Fail';
+
 export const CHANGE_STATUS = '[Stack] Change Status';
 export const CHANGE_STATUS_SUCCESS = '[Stack] Change Status Success';
 export const CHANGE_STATUS_FAIL = '[Stack] Change Status Fail';
@@ -80,6 +84,21 @@ export class AddLikeFailAction implements Action {
     constructor(public payload: number /* stack id */) {}
 }
 
+export class RemoveLikeAction implements Action {
+    readonly type = REMOVE_LIKE;
+    constructor(public payload: number /* stack id */) {}
+}
+
+export class RemoveLikeSuccessAction implements Action {
+    readonly type = REMOVE_LIKE_SUCCESS;
+    constructor(public payload: Stack) {}
+}
+
+export class RemoveLikeFailAction implements Action {
+    readonly type = REMOVE_LIKE_FAIL;
+    constructor(public payload: number /* stack id */) {}
+}
+
 export class ChangeStatusAction implements Action {
     readonly type = CHANGE_STATUS;
     constructor(public payload: number /* stack id */, public status: StackStatus) {}
@@ -107,6 +126,9 @@ export type Actions
     | AddLikeAction
     | AddLikeSuccessAction
     | AddLikeFailAction
+    | RemoveLikeAction
+    | RemoveLikeSuccessAction
+    | RemoveLikeFailAction
     | ChangeStatusAction
     | ChangeStatusSuccessAction
     | ChangeStatusFailAction

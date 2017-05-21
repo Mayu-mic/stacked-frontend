@@ -18,6 +18,10 @@ export const LIKE_COMMENT = '[Comments] Like Comment';
 export const LIKE_COMMENT_SUCCESS = '[Comments] Like Comment Success';
 export const LIKE_COMMENT_FAIL = '[Comments] Like Comment Fail';
 
+export const UNLIKE_COMMENT = '[Comments] Unlike Comment';
+export const UNLIKE_COMMENT_SUCCESS = '[Comments] Unlike Comment Success';
+export const UNLIKE_COMMENT_FAIL = '[Comments] Unlike Comment Fail';
+
 export class RequestCommentsAction implements Action {
     readonly type = REQUEST_COMMENTS;
     constructor(public payload: number /* stack id */) {}
@@ -72,6 +76,22 @@ export class LikeCommentSuccessAction implements Action {
 
 export class LikeCommentFailAction implements Action {
     readonly type = LIKE_COMMENT_FAIL;
+    constructor(public payload: number /* comment id */) {}
+}
+
+export class UnlikeCommentAction implements Action {
+    readonly type = UNLIKE_COMMENT;
+    constructor(public payload: number /* comment id */) {}
+}
+
+export class UnlikeCommentSuccessAction implements Action {
+    readonly type = UNLIKE_COMMENT_SUCCESS;
+    constructor(public payload: Comment) {}
+}
+
+export class UnlikeCommentFailAction implements Action {
+    readonly type = UNLIKE_COMMENT_FAIL;
+    constructor(public payload: number /* comment id */) {}
 }
 
 export type Actions
@@ -87,4 +107,7 @@ export type Actions
     | LikeCommentAction
     | LikeCommentSuccessAction
     | LikeCommentFailAction
+    | UnlikeCommentAction
+    | UnlikeCommentSuccessAction
+    | UnlikeCommentFailAction
     ;

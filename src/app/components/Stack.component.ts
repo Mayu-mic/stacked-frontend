@@ -14,13 +14,13 @@ export class StackComponent {
     @Input() canEdit: boolean;
     @Input() canDelete: boolean;
     @Input() canChangeStatus: boolean;
-    @Output() handleLike: EventEmitter<any> = new EventEmitter(false);
+    @Output() handleToggleLike: EventEmitter<any> = new EventEmitter(false);
     @Output() handleEdit: EventEmitter<any> = new EventEmitter(false);
     @Output() handleDelete: EventEmitter<any> = new EventEmitter(false);
     @Output() handleStatusChange: EventEmitter<StackStatus> = new EventEmitter(false);
 
-    like() {
-        this.handleLike.emit();
+    toggleLike() {
+        this.handleToggleLike.emit();
     }
 
     edit() {

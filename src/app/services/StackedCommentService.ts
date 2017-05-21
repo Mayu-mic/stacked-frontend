@@ -32,4 +32,9 @@ export class StackedCommentService extends StackedService {
             }
         });
     }
+
+    removeStar(commentId: number): Observable<Comment> {
+        const url = `comments/${commentId}/star`;
+        return this.delete<Comment>(url);
+    }
 }

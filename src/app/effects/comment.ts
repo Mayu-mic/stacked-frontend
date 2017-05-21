@@ -1,5 +1,11 @@
 import { of } from 'rxjs/observable/of';
-import { AddCommentAction, DeleteCommentAction, LikeCommentAction, RequestCommentsAction } from '../actions/comments';
+import {
+    AddCommentAction,
+    DeleteCommentAction,
+    LikeCommentAction,
+    RequestCommentsAction,
+    UnlikeCommentAction
+} from '../actions/comments';
 import { Angular2TokenService } from 'angular2-token';
 import { StackedCommentService } from '../services/StackedCommentService';
 import { Action } from '@ngrx/store';
@@ -44,7 +50,16 @@ export class CommentEffects {
         .switchMap((action: LikeCommentAction) =>
             this.commentService.addStar(action.payload)
                 .map(comment => new fromComments.LikeCommentSuccessAction(comment))
-                .catch(_ => of(new fromComments.LikeCommentFailAction()))
+                .catch(_ => of(new fromComments.LikeCommentFailAction(action.payload)))
+        );
+
+    @Effect()
+    removeLike$: Observable<Action> = this.action$
+        .ofType(fromComments.UNLIKE_COMMENT)
+        .switchMap((action: UnlikeCommentAction) =>
+            this.commentService.removeStar(action.payload)
+                .map(comment => new fromComments.UnlikeCommentSuccessAction(comment))
+                .catch(_ => of(new fromComments.UnlikeCommentFailAction(action.payload)))
         );
 
     private commentService: StackedCommentService;

@@ -3,7 +3,7 @@
         [comment]="comment"
         [canLike]="currentUser && currentUser.id != comment.created_by.id"
         [canDelete] = "currentUser"
-        (handleLike)="addCommentLike(comment.id)"
+        (handleToggleLike)="comment.liked ? removeCommentLike(comment.id) : addCommentLike(comment.id)"
         (handleDelete)="deleteComment(comment.id)"
     ></comment-item-component>
 </ng-template>
