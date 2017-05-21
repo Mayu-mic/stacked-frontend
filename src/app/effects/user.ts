@@ -33,10 +33,7 @@ export class UserEffects {
             _ => this.tokenService.validateToken()
                 .map(_ => this.tokenService.currentUserData)
                 .map(user => new fromUser.RequestUserInfoSuccessAction(user))
-                .catch(_ => {
-                    this.tokenService.signOut();
-                    return of(new fromUser.RequestUserInfoFailAction());
-                })
+                .catch(_ => of(new fromUser.RequestUserInfoFailAction()))
         );
 
     private userService: StackedUserService;
