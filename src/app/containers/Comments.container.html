@@ -1,15 +1,23 @@
 <ng-template ngFor let-comment [ngForOf]="(comments$ | async)">
-    <comment-item-component
-        [comment]="comment"
-        [canLike]="currentUser && currentUser.id != comment.created_by.id"
-        [canDelete] = "currentUser"
-        (handleToggleLike)="comment.liked ? removeCommentLike(comment.id) : addCommentLike(comment.id)"
-        (handleDelete)="deleteComment(comment.id)"
-    ></comment-item-component>
+    <div class="row">
+        <div class="col-sm-12">
+            <comment-item-component
+                [comment]="comment"
+                [canLike]="currentUser && currentUser.id != comment.created_by.id"
+                [canDelete] = "currentUser"
+                (handleToggleLike)="comment.liked ? removeCommentLike(comment.id) : addCommentLike(comment.id)"
+                (handleDelete)="deleteComment(comment.id)"
+            ></comment-item-component>
+        </div>
+    </div>
 </ng-template>
 
-<comment-form-component
-    [stackId]="stackId"
-    [canCreate]="currentUser"
-    (handleSubmit)="addComment($event)"
-></comment-form-component>
+<div class="row">
+    <div class="col-sm-12">
+        <comment-form-component
+            [stackId]="stackId"
+            [canCreate]="currentUser"
+            (handleSubmit)="addComment($event)"
+        ></comment-form-component>
+    </div>
+</div>

@@ -1,20 +1,24 @@
-<stack-component 
-    [stack]="currentStack"
-    [single]="true"
-    [canEdit]="currentUser && currentStack.like_count == 0"
-    [canLike]="currentUser && currentUser.id !== currentStack.created_by.id"
-    [canDelete]="currentUser"
-    [canChangeStatus]="currentUser"
-    (handleToggleLike)="currentStack.liked ? removeStackLike() : addStackLike()"
-    (handleEdit)="toggleEditMode()"
-    (handleDelete)="deleteStack()"
-    (handleStatusChange)="changeStackStatus($event, currentStack.id)"
-    *ngIf="!stackEditing"
-></stack-component>
+<div class="row">
+    <div class="col-sm-12">
+        <stack-component 
+            [stack]="currentStack"
+            [single]="true"
+            [canEdit]="currentUser && currentStack.like_count == 0"
+            [canLike]="currentUser && currentUser.id !== currentStack.created_by.id"
+            [canDelete]="currentUser"
+            [canChangeStatus]="currentUser"
+            (handleToggleLike)="currentStack.liked ? removeStackLike() : addStackLike()"
+            (handleEdit)="toggleEditMode()"
+            (handleDelete)="deleteStack()"
+            (handleStatusChange)="changeStackStatus($event, currentStack.id)"
+            *ngIf="!stackEditing"
+        ></stack-component>
 
-<stack-edit-form-component
-    [stack]="currentStack"
-    (handleSubmit)="updateStack($event)"
-    (handleCancel)="toggleEditMode()"
-    *ngIf="stackEditing"
-></stack-edit-form-component>
+        <stack-edit-form-component
+            [stack]="currentStack"
+            (handleSubmit)="updateStack($event)"
+            (handleCancel)="toggleEditMode()"
+            *ngIf="stackEditing"
+        ></stack-edit-form-component>
+    </div>
+</div>
