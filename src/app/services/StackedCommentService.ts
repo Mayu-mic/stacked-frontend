@@ -24,17 +24,17 @@ export class StackedCommentService extends StackedService {
         return this.delete<Comment>(url);
     }
 
-    addStar(commentId: number): Observable<Comment> {
-        const url = `comments/${commentId}/star`;
+    addLike(commentId: number): Observable<Comment> {
+        const url = `comments/${commentId}/like`;
         return this.post<Comment>(url, {
-            comment_star: {
+            comment_like: {
                 comment_id: commentId
             }
         });
     }
 
-    removeStar(commentId: number): Observable<Comment> {
-        const url = `comments/${commentId}/star`;
+    removeLike(commentId: number): Observable<Comment> {
+        const url = `comments/${commentId}/like`;
         return this.delete<Comment>(url);
     }
 }

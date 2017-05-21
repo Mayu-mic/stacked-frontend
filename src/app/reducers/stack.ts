@@ -31,14 +31,14 @@ export function reducer(state = initialState, action: fromStack.Actions | fromCo
         case fromStack.REMOVE_LIKE_FAIL:
             return state ? {
                 ...state,
-                star_count: state.star_count + 1
+                like_count: state.like_count + 1
             } : state;
 
         case fromStack.REMOVE_LIKE:
         case fromStack.ADD_LIKE_FAIL:
             return state ? {
                 ...state,
-                star_count: state.star_count - 1
+                like_count: state.like_count - 1
             } : state;
 
         case fromStack.DELETE_STACK_SUCCESS:

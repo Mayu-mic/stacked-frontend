@@ -30,7 +30,7 @@ export function reducer(state = initialState, action: fromStacks.Actions | fromS
             return state.map(stack =>
                 stack.id === action.payload ? {
                     ...stack,
-                    star_count: stack.star_count + 1,
+                    like_count: stack.like_count + 1,
                 } : stack
             );
 
@@ -39,7 +39,7 @@ export function reducer(state = initialState, action: fromStacks.Actions | fromS
             return state.map(stack =>
                 stack.id === action.payload ? {
                     ...stack,
-                    star_count: stack.star_count - 1,
+                    like_count: stack.like_count - 1,
                 } : stack
             );
 

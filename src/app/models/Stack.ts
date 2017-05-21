@@ -11,7 +11,7 @@ export interface Stack {
     liked?: boolean;
     comments: Comment[];
     status: StackStatus;
-    star_count: number;
+    like_count: number;
     comment_count: number;
     created_by: User;
     createdAt: String;

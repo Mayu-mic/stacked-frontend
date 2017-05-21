@@ -54,16 +54,16 @@ export class StackedStackService extends StackedService {
     }
 
     addLike(stackId: number): Observable<Stack> {
-        const url = `stacks/${stackId}/star`;
+        const url = `stacks/${stackId}/like`;
         return this.post<Stack>(url, {
-            stack_star: {
+            stack_like: {
                 stack_id: stackId
             }
         });
     }
 
     removeLike(stackId: number): Observable<Stack> {
-        const url = `stacks/${stackId}/star`;
+        const url = `stacks/${stackId}/like`;
         return this.delete<Stack>(url);
     }
 }

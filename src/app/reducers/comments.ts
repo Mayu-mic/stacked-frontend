@@ -26,7 +26,7 @@ export function reducer(state = initialState, action: fromComments.Actions) {
             return state.map(comment =>
                 comment.id === action.payload ? {
                     ...comment,
-                    star_count: comment.star_count + 1,
+                    like_count: comment.like_count + 1,
                 } : comment
             );
 
@@ -35,7 +35,7 @@ export function reducer(state = initialState, action: fromComments.Actions) {
             return state.map(comment =>
                 comment.id === action.payload ? {
                     ...comment,
-                    star_count: comment.star_count - 1
+                    like_count: comment.like_count - 1
                 } : comment
             );
 

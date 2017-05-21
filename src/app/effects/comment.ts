@@ -48,7 +48,7 @@ export class CommentEffects {
     addLike$: Observable<Action> = this.action$
         .ofType(fromComments.LIKE_COMMENT)
         .switchMap((action: LikeCommentAction) =>
-            this.commentService.addStar(action.payload)
+            this.commentService.addLike(action.payload)
                 .map(comment => new fromComments.LikeCommentSuccessAction(comment))
                 .catch(_ => of(new fromComments.LikeCommentFailAction(action.payload)))
         );
@@ -57,7 +57,7 @@ export class CommentEffects {
     removeLike$: Observable<Action> = this.action$
         .ofType(fromComments.UNLIKE_COMMENT)
         .switchMap((action: UnlikeCommentAction) =>
-            this.commentService.removeStar(action.payload)
+            this.commentService.removeLike(action.payload)
                 .map(comment => new fromComments.UnlikeCommentSuccessAction(comment))
                 .catch(_ => of(new fromComments.UnlikeCommentFailAction(action.payload)))
         );
