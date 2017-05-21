@@ -8,6 +8,7 @@ export interface Stack {
     list: List;
     title: string;
     note: string;
+    liked?: boolean;
     comments: Comment[];
     status: StackStatus;
     star_count: number;

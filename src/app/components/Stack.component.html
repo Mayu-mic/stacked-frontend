@@ -43,7 +43,8 @@
             class="btn btn-danger col"
             (click)="like()"
             [disabled]="!canLike">
-            <i class="fa fa-heart"></i>
+            <i class="fa fa-heart" *ngIf="stack.liked"></i>
+            <i class="fa fa-heart-o" *ngIf="!stack.liked"></i>
             <span class="badge badge-pill badge-danger">{{stack.star_count}}</span>
         </button>
     </footer>
