@@ -10,7 +10,7 @@ import { CommentEffects } from './effects/comment';
 import { CommentItemComponent } from './components/CommentItem.component';
 import { StackEffects } from './effects/stack';
 import { StackContainer } from './containers/Stack.container';
-import { StacksPage } from './pages/stacks.page';
+import { StacksPage } from './pages/Stacks.page';
 import { IndexPage } from './pages/Index.page';
 import { StackComponent } from './components/Stack.component';
 import { StacksEffects } from './effects/stacks';

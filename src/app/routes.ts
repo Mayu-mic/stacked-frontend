@@ -1,4 +1,4 @@
-import { StacksPage } from './pages/stacks.page';
+import { StacksPage } from './pages/Stacks.page';
 import { IndexPage } from './pages/Index.page';
 import { RouterModule, Routes } from '@angular/router';
 import { OAuthCallbackPage } from './pages/OAuthCallback.page';
