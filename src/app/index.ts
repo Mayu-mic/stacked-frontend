@@ -88,8 +88,8 @@ export class AppModule {
     private store: Store<any>,
   ) {
     tokenService.init({
-      apiBase: 'http://localhost:4000',
-      oAuthBase: 'http://localhost:4000',
+      apiBase: process.env.API_BASE,
+      oAuthBase: process.env.API_BASE,
       oAuthWindowType: 'sameWindow',
     });
 

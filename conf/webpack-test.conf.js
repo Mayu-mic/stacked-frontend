@@ -35,6 +35,9 @@ module.exports = {
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       conf.paths.src
     ),
+    new webpack.DefinePlugin({
+      'process.env.API_BASE': JSON.stringify(process.env.API_BASE)
+    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         resolve: {},

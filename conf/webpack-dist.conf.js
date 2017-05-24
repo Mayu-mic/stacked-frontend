@@ -56,7 +56,8 @@ module.exports = {
       conf.paths.src
     ),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      'process.env.NODE_ENV': '"production"',
+      'process.env.API_BASE': JSON.stringify(process.env.API_BASE)
     }),
     new webpack.optimize.UglifyJsPlugin({
       output: {comments: false},
